@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melecio Laurente — IT Student & Systems Builder</title>
+<meta name="description" content="Portfolio of Melecio Laurente, IT student specializing in practical business systems like POS and inventory management.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <a href="#top" class="nav__mark">ML<span class="nav__mark-dot">.</span></a>
+  <nav class="nav__links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact" class="nav__cta">Contact</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__text reveal">
+      <p class="eyebrow">IT STUDENT — SYSTEMS BUILDER</p>
+      <h1 class="hero__name">Melecio<br>Laurente</h1>
+      <p class="hero__tagline">
+        I build practical software for real operations — from point-of-sale
+        counters to the stockrooms behind them. Currently studying Information
+        Technology and sharpening my craft one working system at a time.
+      </p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=24-13012@lcctanauan.edu.ph" target="_blank" rel="noopener" class="btn btn--ghost">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero__visual reveal" aria-hidden="true">
+      <div class="receipt">
+        <div class="receipt__head">
+          <span>SYSTEM STATUS</span>
+          <span class="receipt__date">TODAY</span>
+        </div>
+        <div class="receipt__row"><span>POS TERMINAL</span><i></i><span class="tag tag--live">ONLINE</span></div>
+        <div class="receipt__row"><span>INVENTORY DB</span><i></i><span class="tag tag--live">SYNCED</span></div>
+        <div class="receipt__row"><span>LOW STOCK ALERTS</span><i></i><span class="tag">ACTIVE</span></div>
+        <div class="receipt__row"><span>SALES REPORT</span><i></i><span class="tag">READY</span></div>
+        <div class="receipt__divider"></div>
+        <div class="receipt__row receipt__total"><span>BUILT BY</span><i></i><span>M. LAURENTE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <p class="eyebrow reveal">01 — ABOUT</p>
+    <div class="about reveal">
+      <h2 class="section__title">Turning everyday operations<br>into working software.</h2>
+      <p class="about__body">
+        I'm an IT student who likes systems I can actually watch work — a sale
+        going through, stock counting itself down, a report building itself at
+        the end of the day. Most of my learning happens by building tools
+        small businesses genuinely need: point-of-sale counters, inventory
+        trackers, and the databases that keep them honest. I care about clean
+        interfaces, but I care more about logic that doesn't break under real use.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <p class="eyebrow reveal">02 — SKILLS</p>
+    <h2 class="section__title reveal">Stock on hand.</h2>
+    <div class="skills reveal">
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-01</span>System Design</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-02</span>Database Design</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-03</span>Problem Solving</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-04</span>PHP</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-05</span>C</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-06</span>C++</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-07</span>MySQL</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-08</span>Python</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <p class="eyebrow reveal">03 — PROJECTS</p>
+    <h2 class="section__title reveal">What I've shipped.</h2>
+
+    <div class="projects">
+      <article class="project reveal">
+        <div class="project__head">
+          <h3>POS &amp; Inventory Management System</h3>
+          <span class="tag">FEATURED</span>
+        </div>
+        <p class="project__desc">
+          A point-of-sale and inventory system built to help a small business
+          process sales and manage stock without a spreadsheet. Stock counts
+          update automatically with every transaction, low-stock items are
+          flagged before they run out, and a reporting dashboard summarizes
+          daily sales.
+        </p>
+        <div class="project__meta">
+          <div class="project__meta-row"><span>TYPE</span><i></i><span>Web-based business application</span></div>
+          <div class="project__meta-row"><span>STACK</span><i></i><span>PHP, MySQL, Bootstrap</span></div>
+          <div class="project__meta-row"><span>ROLE</span><i></i><span>Sole Developer</span></div>
+          <div class="project__meta-row"><span>FEATURES</span><i></i><span>Real-time stock deduction, low-stock alerts, sales reports</span></div>
+        </div>
+        <div class="project__links">
+          <a href="#" class="link">Source Code →</a>
+          <a href="#" class="link">Live Demo →</a>
+        </div>
+      </article>
+
+      <article class="project project--placeholder reveal">
+        <div class="project__head">
+          <h3>Your Next Project</h3>
+          <span class="tag tag--muted">COMING SOON</span>
+        </div>
+        <p class="project__desc">
+          Slot in your next build here — a mobile app, a school capstone, a
+          personal tool. Duplicate this card in index.html and fill in the details.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section--contact">
+    <p class="eyebrow reveal">04 — CONTACT</p>
+    <h2 class="section__title reveal">Let's build something.</h2>
+    <p class="contact__body reveal">
+      Open to on-the-job training placements, internships, and small projects.
+      The fastest way to reach me is email.
+    </p>
+    <div class="contact__actions reveal">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=24-13012@lcctanauan.edu.ph" target="_blank" rel="noopener" class="btn btn--primary">24-13012@lcctanauan.edu.ph</a>
+      <button id="copyLinkBtn" class="btn btn--ghost">Copy Link</button>
+    </div>
+    <div class="contact__socials reveal">
+      <a href="#" class="link">GitHub</a>
+      <a href="#" class="link">LinkedIn</a>
+      <a href="#" class="link">Facebook</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© <span id="year"></span> Melecio Laurente</span>
+  <span>Built with HTML, CSS &amp; JS</span>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
