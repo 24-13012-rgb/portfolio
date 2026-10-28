@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/additions.css">
 </head>
 <body>
 
@@ -23,6 +24,7 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
     <a href="#contact" class="nav__cta">Contact</a>
   </nav>
   <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -48,19 +50,10 @@
       </div>
     </div>
 
-    <div class="hero__visual reveal" aria-hidden="true">
-      <div class="receipt">
-        <div class="receipt__head">
-          <span>SYSTEM STATUS</span>
-          <span class="receipt__date">TODAY</span>
-        </div>
-        <div class="receipt__row"><span>POS TERMINAL</span><i></i><span class="tag tag--live">ONLINE</span></div>
-        <div class="receipt__row"><span>INVENTORY DB</span><i></i><span class="tag tag--live">SYNCED</span></div>
-        <div class="receipt__row"><span>LOW STOCK ALERTS</span><i></i><span class="tag">ACTIVE</span></div>
-        <div class="receipt__row"><span>SALES REPORT</span><i></i><span class="tag">READY</span></div>
-        <div class="receipt__divider"></div>
-        <div class="receipt__row receipt__total"><span>BUILT BY</span><i></i><span>M. LAURENTE</span></div>
-      </div>
+    <div class="hero__visual reveal">
+      <!-- Put your photo at assets/profile.jpg (exact filename). Until then, assets/placeholder.svg is shown. -->
+      <img src="assets/profile.jpg" alt="Melecio Laurente" class="hero__photo"
+           onerror="this.onerror=null; this.src='assets/placeholder.svg';">
     </div>
   </section>
 
@@ -93,13 +86,17 @@
       <div class="skill-tag"><span class="skill-tag__sku">SKU-06</span>C++</div>
       <div class="skill-tag"><span class="skill-tag__sku">SKU-07</span>MySQL</div>
       <div class="skill-tag"><span class="skill-tag__sku">SKU-08</span>Python</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-09</span>Java</div>
+      <div class="skill-tag"><span class="skill-tag__sku">SKU-10</span>HTML</div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS
+       To add a project: copy one whole <article class="project reveal"> ... </article>
+       block below, paste it under the last one, and change the text. -->
   <section id="projects" class="section">
     <p class="eyebrow reveal">03 — PROJECTS</p>
-    <h2 class="section__title reveal">What I've shipped.</h2>
+    <h2 class="section__title reveal">Projects I've made.</h2>
 
     <div class="projects">
       <article class="project reveal">
@@ -120,28 +117,45 @@
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Sole Developer</span></div>
           <div class="project__meta-row"><span>FEATURES</span><i></i><span>Real-time stock deduction, low-stock alerts, sales reports</span></div>
         </div>
+        <!-- Add links here when you have them, for example:
         <div class="project__links">
-          <a href="#" class="link">Source Code →</a>
-          <a href="#" class="link">Live Demo →</a>
-        </div>
+          <a href="https://github.com/24-13012-rgb/YOUR-REPO" target="_blank" rel="noopener" class="link">Source Code →</a>
+        </div> -->
       </article>
+    </div>
+  </section>
 
-      <article class="project project--placeholder reveal">
-        <div class="project__head">
-          <h3>Your Next Project</h3>
-          <span class="tag tag--muted">COMING SOON</span>
-        </div>
-        <p class="project__desc">
-          Slot in your next build here — a mobile app, a school capstone, a
-          personal tool. Duplicate this card in index.html and fill in the details.
-        </p>
-      </article>
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="section">
+    <p class="eyebrow reveal">04 — ACHIEVEMENTS</p>
+    <h2 class="section__title reveal">Certified &amp; verified.</h2>
+    <div class="achievements reveal">
+      <div class="achievement-card">
+        <img src="assets/achievements/network-technician-career-path.png" alt="Cisco Networking Academy: Network Technician Career Path">
+        <p>Network Technician Career Path</p>
+      </div>
+      <div class="achievement-card">
+        <img src="assets/achievements/networking-basics.png" alt="Cisco Networking Academy: Networking Basics">
+        <p>Networking Basics</p>
+      </div>
+      <div class="achievement-card">
+        <img src="assets/achievements/network-addressing-and-basic-troubleshooting.png" alt="Cisco Networking Academy: Network Addressing and Basic Troubleshooting">
+        <p>Network Addressing and Basic Troubleshooting</p>
+      </div>
+      <div class="achievement-card">
+        <img src="assets/achievements/networking-devices-and-initial-configuration.png" alt="Cisco Networking Academy: Networking Devices and Initial Configuration">
+        <p>Networking Devices and Initial Configuration</p>
+      </div>
+      <div class="achievement-card">
+        <img src="assets/achievements/network-support-and-security.png" alt="Cisco Networking Academy: Network Support and Security">
+        <p>Network Support and Security</p>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="section section--contact">
-    <p class="eyebrow reveal">04 — CONTACT</p>
+    <p class="eyebrow reveal">05 — CONTACT</p>
     <h2 class="section__title reveal">Let's build something.</h2>
     <p class="contact__body reveal">
       Open to on-the-job training placements, internships, and small projects.
@@ -152,9 +166,7 @@
       <button id="copyLinkBtn" class="btn btn--ghost">Copy Link</button>
     </div>
     <div class="contact__socials reveal">
-      <a href="#" class="link">GitHub</a>
-      <a href="#" class="link">LinkedIn</a>
-      <a href="#" class="link">Facebook</a>
+      <a href="https://github.com/24-13012-rgb" target="_blank" rel="noopener" class="link">GitHub</a>
     </div>
   </section>
 
