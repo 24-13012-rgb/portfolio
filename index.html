@@ -64,6 +64,7 @@
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <header class="nav" id="top">
   <a href="#top" class="nav__mark" aria-label="Melecio Laurente, back to top">ML<span class="nav__mark-dot">.</span></a>
   <nav class="nav__links" id="navLinks" aria-label="Main">
@@ -90,7 +91,7 @@
   <section class="hero">
     <div class="hero__text reveal">
       <p class="status-pill">Open to OJT &amp; internships</p>
-      <p class="eyebrow">IT STUDENT — SYSTEMS BUILDER</p>
+      <p class="eyebrow">IT STUDENT — <span id="typed" data-words="SYSTEMS BUILDER|PHP DEVELOPER|DATABASE DESIGNER|PROBLEM SOLVER">SYSTEMS BUILDER</span><span class="typed-caret" aria-hidden="true"></span></p>
       <h1 class="hero__name">Melecio<br>Laurente</h1>
       <p class="hero__tagline">
         I'm an IT student and developer who builds systems people actually use
@@ -136,6 +137,12 @@
         I'm looking for an on-the-job training or internship placement where I
         can keep building real systems and learn from a team that ships them.
       </p>
+      <dl class="stats">
+        <div><dt data-count="4">4</dt><dd>Systems built</dd></div>
+        <div><dt data-count="6">6</dt><dd>Cisco badges</dd></div>
+        <div><dt data-count="15">15</dt><dd>Modules completed</dd></div>
+        <div><dt data-count="10">10</dt><dd>Skills</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -164,13 +171,33 @@
     <p class="eyebrow reveal">03 — PROJECTS</p>
     <h2 class="section__title reveal">Projects I've made.</h2>
 
+    <div class="filters reveal" role="group" aria-label="Filter projects">
+      <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-filter="system" aria-pressed="false">Business systems</button>
+      <button type="button" class="chip" data-filter="game" aria-pressed="false">Games</button>
+    </div>
     <div class="projects">
-      <article class="project reveal">
+      <article class="project reveal" data-type="system">
         <div class="project__head">
           <h3>ElectroPOS</h3>
           <span class="tag">FEATURED</span>
         </div>
         <p class="project__sub">POS and Inventory System for an Electric Store</p>
+        <div class="project__preview">
+          <button type="button" class="show-project" data-open-group="electropos" aria-label="Show the project: ElectroPOS (7 slides)">
+            <img src="assets/projects/thumbs/electropos-02-dashboard.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+            <span class="show-project__label"><span class="show-project__play" aria-hidden="true">&#9654;</span> Show the project <small>7 slides</small></span>
+          </button>
+        </div>
+        <div class="project__slides" hidden>
+          <span data-group="electropos" data-src="assets/projects/electropos-01-login.jpg" data-title="ElectroPOS: Secure staff login" data-alt="ElectroPOS screenshot: Secure staff login" data-desc="Staff log in with a username and password, with a forgot-password option."></span>
+          <span data-group="electropos" data-src="assets/projects/electropos-02-dashboard.jpg" data-title="ElectroPOS: Dashboard: sales today, weekly and monthly totals, best sellers" data-alt="ElectroPOS screenshot: Dashboard: sales today, weekly and monthly totals, best sellers" data-desc="Today&#x27;s orders and sales, weekly and monthly sales, low-stock count, best sellers and average order value, with daily, weekly and monthly views."></span>
+          <span data-group="electropos" data-src="assets/projects/electropos-03-pos.jpg" data-title="ElectroPOS: Point of Sale: build an order with discount and tax" data-alt="ElectroPOS screenshot: Point of Sale: build an order with discount and tax" data-desc="Staff search or sort products, add them to the current order, apply a percent or peso discount, and charge the total with 10% tax. Low-stock items are flagged."></span>
+          <span data-group="electropos" data-src="assets/projects/electropos-04-inventory.jpg" data-title="ElectroPOS: Inventory: stock levels with critical and low-stock alerts" data-alt="ElectroPOS screenshot: Inventory: stock levels with critical and low-stock alerts" data-desc="Manage products and stock, with critical and low stock highlighted. Staff can add or remove stock, edit or delete a product, and search or sort."></span>
+          <span data-group="electropos" data-src="assets/projects/electropos-05-admin.jpg" data-title="ElectroPOS: Admin panel: staff approvals and accounts" data-alt="ElectroPOS screenshot: Admin panel: staff approvals and accounts" data-desc="Admins approve new accounts, manage staff roles, and change store settings and passwords."></span>
+          <span data-group="electropos" data-src="assets/projects/electropos-06-history.jpg" data-title="ElectroPOS: Activity history: full audit log of system events" data-alt="ElectroPOS screenshot: Activity history: full audit log of system events" data-desc="A full audit log of orders, product changes, user changes and logins, filterable by user, date and category. It can be exported to CSV."></span>
+          <span data-group="electropos" data-src="assets/projects/electropos-07-report.jpg" data-title="ElectroPOS: History report: daily, weekly or monthly PDF" data-alt="ElectroPOS screenshot: History report: daily, weekly or monthly PDF" data-desc="Generates a PDF audit report for a day, week or month, with an executive summary, order activity, product changes, login events and the full activity log."></span>
+        </div>
         <ul class="project__list">
           <li>Developed a point-of-sale and inventory system for an electric store to handle sales transactions and stock monitoring.</li>
           <li>Built inventory tracking features to keep product quantities accurate and reduce manual record-keeping.</li>
@@ -180,11 +207,34 @@
         </div>
         <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
-      <article class="project reveal">
+      <article class="project reveal" data-type="system">
         <div class="project__head">
           <h3>HR Ticket System</h3>
         </div>
         <p class="project__sub">Employment records, payroll, leave and staff requests</p>
+        <div class="project__preview">
+          <button type="button" class="show-project" data-open-group="hr" aria-label="Show the project: HR Ticket System (15 slides)">
+            <img src="assets/projects/thumbs/hr-01-login.webp" alt="" width="720" height="430" loading="lazy" decoding="async">
+            <span class="show-project__label"><span class="show-project__play" aria-hidden="true">&#9654;</span> Show the project <small>15 slides</small></span>
+          </button>
+        </div>
+        <div class="project__slides" hidden>
+          <span data-group="hr" data-src="assets/projects/hr-01-login.jpg" data-title="HR Ticket System: Sign in with your school email" data-alt="HR Ticket System screenshot: Sign in with your school email" data-desc="Staff and teachers sign in with their school email and are taken to the right place automatically."></span>
+          <span data-group="hr" data-src="assets/projects/hr-02-teacher-home.jpg" data-title="HR Ticket System: Teacher home: leave balances and my tickets" data-alt="HR Ticket System screenshot: Teacher home: leave balances and my tickets" data-desc="A teacher&#x27;s home screen shows leave days left for each leave type and a list of their tickets with priority, status and due date."></span>
+          <span data-group="hr" data-src="assets/projects/hr-03-new-ticket.jpg" data-title="HR Ticket System: New ticket: categories and leave request form" data-alt="HR Ticket System screenshot: New ticket: categories and leave request form" data-desc="Requesters pick a category such as leave, payroll or benefits. The leave form counts the days asked for and warns when it is more than their balance, which then needs HR Head approval."></span>
+          <span data-group="hr" data-src="assets/projects/hr-04-teacher-ticket.jpg" data-title="HR Ticket System: Ticket conversation as the requester" data-alt="HR Ticket System screenshot: Ticket conversation as the requester" data-desc="Each ticket is a conversation between the requester and HR. The requester can reply, see the due date and cancel the ticket."></span>
+          <span data-group="hr" data-src="assets/projects/hr-05-notifications.jpg" data-title="HR Ticket System: Notifications on ticket updates" data-alt="HR Ticket System screenshot: Notifications on ticket updates" data-desc="Requesters are notified when HR replies, when a ticket changes status, and when their leave balance is adjusted."></span>
+          <span data-group="hr" data-src="assets/projects/hr-06-help-center.jpg" data-title="HR Ticket System: Help center with common questions" data-alt="HR Ticket System screenshot: Help center with common questions" data-desc="A searchable help center answers common questions about leave, payroll, employment records and complaints."></span>
+          <span data-group="hr" data-src="assets/projects/hr-07-overview.jpg" data-title="HR Ticket System: HR ticket overview with status filters" data-alt="HR Ticket System screenshot: HR ticket overview with status filters" data-desc="HR sees every ticket in one place, with counts by status, filter tabs, search, priority, assignee and due date."></span>
+          <span data-group="hr" data-src="assets/projects/hr-08-overview-dark.jpg" data-title="HR Ticket System: Ticket overview in dark mode" data-alt="HR Ticket System screenshot: Ticket overview in dark mode" data-desc="The same overview in dark mode. Users can switch between Light, Dark and Auto."></span>
+          <span data-group="hr" data-src="assets/projects/hr-09-overdue.jpg" data-title="HR Ticket System: Overdue tickets view" data-alt="HR Ticket System screenshot: Overdue tickets view" data-desc="A view of overdue tickets, with late due dates in red so HR knows what to handle first."></span>
+          <span data-group="hr" data-src="assets/projects/hr-10-ticket-internal.jpg" data-title="HR Ticket System: HR ticket with internal notes and status actions" data-alt="HR Ticket System screenshot: HR ticket with internal notes and status actions" data-desc="HR can reply to the requester or add an internal note hidden from them, assign the ticket, change its status, or escalate it to the HR Head."></span>
+          <span data-group="hr" data-src="assets/projects/hr-11-ticket-leave.jpg" data-title="HR Ticket System: Leave ticket flagged for HR Head approval" data-alt="HR Ticket System screenshot: Leave ticket flagged for HR Head approval" data-desc="A leave request over the person&#x27;s balance is flagged and needs HR Head approval, who can then approve or reject it."></span>
+          <span data-group="hr" data-src="assets/projects/hr-12-leave-balances.jpg" data-title="HR Ticket System: Leave balances and adjustment history" data-alt="HR Ticket System screenshot: Leave balances and adjustment history" data-desc="Shows leave days left for each person and lets HR adjust a balance with a reason. Every adjustment is kept in a history."></span>
+          <span data-group="hr" data-src="assets/projects/hr-13-reports.jpg" data-title="HR Ticket System: Reports: volumes, categories and response times" data-alt="HR Ticket System screenshot: Reports: volumes, categories and response times" data-desc="Tickets received, solved and overdue, average first reply and time to finish, on-time rate, a chart per day, and breakdowns by category, priority and status. Exports to CSV."></span>
+          <span data-group="hr" data-src="assets/projects/hr-14-team.jpg" data-title="HR Ticket System: Team and users management" data-alt="HR Ticket System screenshot: Team and users management" data-desc="Admins add and deactivate staff and teachers, and set each person&#x27;s role and department."></span>
+          <span data-group="hr" data-src="assets/projects/hr-15-audit-log.jpg" data-title="HR Ticket System: Audit log of sign-ins and changes" data-alt="HR Ticket System screenshot: Audit log of sign-ins and changes" data-desc="A record of sign-ins, ticket changes, assignments, leave balance changes and account changes, filterable by action, date and search."></span>
+        </div>
         <ul class="project__list">
           <li>Built a system for the HR office to manage employment records, payroll concerns, leave applications, benefits, and faculty and staff requests.</li>
           <li>Organized requests as tickets so HR can submit, track, and resolve concerns in one place.</li>
@@ -194,11 +244,31 @@
         </div>
         <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
-      <article class="project reveal">
+      <article class="project reveal" data-type="system">
         <div class="project__head">
           <h3>School Library System</h3>
         </div>
         <p class="project__sub">Circulation, patrons, reservations and reports</p>
+                <div class="project__preview">
+          <button type="button" class="show-project" data-open-group="library" aria-label="Show the project: School Library System (12 slides)">
+            <img src="assets/projects/thumbs/library-01-dashboard.webp" alt="" width="480" height="236" loading="lazy" decoding="async">
+            <span class="show-project__label"><span class="show-project__play" aria-hidden="true">&#9654;</span> Show the project <small>12 slides</small></span>
+          </button>
+        </div>
+        <div class="project__slides" hidden>
+          <span data-group="library" data-src="assets/projects/library-01-dashboard.jpg" data-title="School Library System: Dashboard with modules and live stats" data-alt="School Library System screenshot: Dashboard with modules and live stats" data-desc="The home screen shows active loans, visitors today, reserved books and the 17,830 titles in the catalog, with quick links to every module."></span>
+          <span data-group="library" data-src="assets/projects/library-02-attendance-log.jpg" data-title="School Library System: Check in/out and live activity log" data-alt="School Library System screenshot: Check in/out and live activity log" data-desc="Staff check patrons in and out by ID number or guest name, and a live activity log records borrowing and attendance as they happen."></span>
+          <span data-group="library" data-src="assets/projects/library-03-catalog.jpg" data-title="School Library System: Catalog search with item status" data-alt="School Library System screenshot: Catalog search with item status" data-desc="Search 17,830 items by title, author, call number or ISBN, and filter by location, status and type. Borrow or return an item from the list, or export to CSV."></span>
+          <span data-group="library" data-src="assets/projects/library-04-circulation.jpg" data-title="School Library System: Circulation desk: check out, return, renew" data-alt="School Library System screenshot: Circulation desk: check out, return, renew" data-desc="The circulation desk handles check out, return and renew by scanning a patron ID and an accession number. The latest activity is listed below."></span>
+          <span data-group="library" data-src="assets/projects/library-05-attendance.jpg" data-title="School Library System: Attendance: daily visitor log" data-alt="School Library System screenshot: Attendance: daily visitor log" data-desc="A daily visitor log with visits today, people inside now, different patrons and visits in the last 7 days. It can be exported to CSV."></span>
+          <span data-group="library" data-src="assets/projects/library-06-acquisition.jpg" data-title="School Library System: Acquisition: orders and purchases" data-alt="School Library System screenshot: Acquisition: orders and purchases" data-desc="Tracks orders and purchases of new materials: 9,536 records with department, dealer, quantity, price, status and total value."></span>
+          <span data-group="library" data-src="assets/projects/library-07-inventory.jpg" data-title="School Library System: Inventory: shelf audit by location" data-alt="School Library System screenshot: Inventory: shelf audit by location" data-desc="A shelf audit by location. It shows how many items should be on each shelf, how many were verified by scanning, and how many are marked lost."></span>
+          <span data-group="library" data-src="assets/projects/library-08-files.jpg" data-title="School Library System: Files: upload and search documents" data-alt="School Library System screenshot: Files: upload and search documents" data-desc="Upload and search digital publications, records and archival documents such as PDF, Word, Excel, PowerPoint, text, CSV and images."></span>
+          <span data-group="library" data-src="assets/projects/library-09-reports.jpg" data-title="School Library System: Reports: circulation summaries" data-alt="School Library System screenshot: Reports: circulation summaries" data-desc="Reports for any date range show checkouts, returns, fines and payments, plus checkouts by patron type and Dewey subject class. They can be printed or exported."></span>
+          <span data-group="library" data-src="assets/projects/library-10-serials.jpg" data-title="School Library System: Serials: periodicals and subscriptions" data-alt="School Library System screenshot: Serials: periodicals and subscriptions" data-desc="Manages periodicals and subscriptions with vendor, frequency and issues received, and warns when a subscription is ending."></span>
+          <span data-group="library" data-src="assets/projects/library-11-reservation.jpg" data-title="School Library System: Reservation: reserve books" data-alt="School Library System screenshot: Reservation: reserve books" data-desc="Reserve a book with a patron ID and an accession number. Available items go to the reserve shelf, and items on loan join a queue."></span>
+          <span data-group="library" data-src="assets/projects/library-12-utilities.jpg" data-title="School Library System: Utilities: library rules and settings" data-alt="School Library System screenshot: Utilities: library rules and settings" data-desc="Library settings: reserve shelf days, renewals allowed, closed days, blocking borrowing while items are overdue, and borrowing rules for each patron type."></span>
+        </div>
         <ul class="project__list">
           <li>Developed a library management system covering circulation (borrow, return, renew), patron records, and overdue lists.</li>
           <li>Added attendance, acquisition, inventory, file storage, serials, and reservation modules for books, rooms, and equipment.</li>
@@ -209,11 +279,22 @@
         </div>
         <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
-      <article class="project reveal">
+      <article class="project reveal" data-type="game">
         <div class="project__head">
           <h3>Connect4</h3>
         </div>
         <p class="project__sub">Cross-platform game app</p>
+                <div class="project__preview">
+          <button type="button" class="show-project" data-open-group="connect4" aria-label="Show the project: Connect4 (3 slides)">
+            <img src="assets/projects/thumbs/connect4-1-start.webp" alt="" width="640" height="316" loading="lazy" decoding="async">
+            <span class="show-project__label"><span class="show-project__play" aria-hidden="true">&#9654;</span> Show the project <small>3 slides</small></span>
+          </button>
+        </div>
+        <div class="project__slides" hidden>
+          <span data-group="connect4" data-src="assets/projects/connect4-1-start.jpg" data-title="Connect4: Start screen: enter your name and pick a color" data-alt="Connect4 screenshot: Start screen: enter your name and pick a color" data-desc="Players enter their name and pick one of ten colors, then create a game."></span>
+          <span data-group="connect4" data-src="assets/projects/connect4-2-share.jpg" data-title="Connect4: Share the join link or scan the QR code" data-alt="Connect4 screenshot: Share the join link or scan the QR code" data-desc="A friend joins by scanning the QR code or opening the link, which can be copied in one click."></span>
+          <span data-group="connect4" data-src="assets/projects/connect4-3-board.jpg" data-title="Connect4: Game board with scores and controls" data-alt="Connect4 screenshot: Game board with scores and controls" data-desc="The game board with each player&#x27;s score, plus New Round, Reset Scores, New Players and View Records. Click a column or press the key above it (Q W E R T Y U) to drop a disc."></span>
+        </div>
         <ul class="project__list">
           <li>Created a Connect4 game app playable on both mobile and PC, allowing players to compete against a friend.</li>
           <li>Designed game logic and a simple, responsive interface that works across devices.</li>
@@ -232,32 +313,32 @@
     <p class="eyebrow reveal">04 — ACHIEVEMENTS</p>
     <h2 class="section__title reveal">Certified &amp; verified.</h2>
     <div class="achievements reveal">
-      <button type="button" class="achievement-card" data-src="assets/achievements/html-essentials.png" data-title="HTML Essentials" aria-label="View HTML Essentials badge">
+      <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/html-essentials.png" data-title="HTML Essentials" aria-label="View HTML Essentials badge">
         <img src="assets/achievements/thumbs/html-essentials.webp" alt="Cisco Networking Academy: HTML Essentials" width="360" height="360" loading="lazy" decoding="async">
         <p>HTML Essentials</p>
         <span class="achievement-card__hint">Click to view</span>
       </button>
-      <button type="button" class="achievement-card" data-src="assets/achievements/network-technician-career-path.png" data-title="Network Technician Career Path" aria-label="View Network Technician Career Path badge">
+      <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/network-technician-career-path.png" data-title="Network Technician Career Path" aria-label="View Network Technician Career Path badge">
         <img src="assets/achievements/thumbs/network-technician-career-path.webp" alt="Cisco Networking Academy: Network Technician Career Path" width="360" height="360" loading="lazy" decoding="async">
         <p>Network Technician Career Path</p>
         <span class="achievement-card__hint">Click to view</span>
       </button>
-      <button type="button" class="achievement-card" data-src="assets/achievements/networking-basics.png" data-title="Networking Basics" aria-label="View Networking Basics badge">
+      <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/networking-basics.png" data-title="Networking Basics" aria-label="View Networking Basics badge">
         <img src="assets/achievements/thumbs/networking-basics.webp" alt="Cisco Networking Academy: Networking Basics" width="360" height="360" loading="lazy" decoding="async">
         <p>Networking Basics</p>
         <span class="achievement-card__hint">Click to view</span>
       </button>
-      <button type="button" class="achievement-card" data-src="assets/achievements/network-addressing-and-basic-troubleshooting.png" data-title="Network Addressing and Basic Troubleshooting" aria-label="View Network Addressing and Basic Troubleshooting badge">
+      <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/network-addressing-and-basic-troubleshooting.png" data-title="Network Addressing and Basic Troubleshooting" aria-label="View Network Addressing and Basic Troubleshooting badge">
         <img src="assets/achievements/thumbs/network-addressing-and-basic-troubleshooting.webp" alt="Cisco Networking Academy: Network Addressing and Basic Troubleshooting" width="360" height="360" loading="lazy" decoding="async">
         <p>Network Addressing and Basic Troubleshooting</p>
         <span class="achievement-card__hint">Click to view</span>
       </button>
-      <button type="button" class="achievement-card" data-src="assets/achievements/networking-devices-and-initial-configuration.png" data-title="Networking Devices and Initial Configuration" aria-label="View Networking Devices and Initial Configuration badge">
+      <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/networking-devices-and-initial-configuration.png" data-title="Networking Devices and Initial Configuration" aria-label="View Networking Devices and Initial Configuration badge">
         <img src="assets/achievements/thumbs/networking-devices-and-initial-configuration.webp" alt="Cisco Networking Academy: Networking Devices and Initial Configuration" width="360" height="360" loading="lazy" decoding="async">
         <p>Networking Devices and Initial Configuration</p>
         <span class="achievement-card__hint">Click to view</span>
       </button>
-      <button type="button" class="achievement-card" data-src="assets/achievements/network-support-and-security.png" data-title="Network Support and Security" aria-label="View Network Support and Security badge">
+      <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/network-support-and-security.png" data-title="Network Support and Security" aria-label="View Network Support and Security badge">
         <img src="assets/achievements/thumbs/network-support-and-security.webp" alt="Cisco Networking Academy: Network Support and Security" width="360" height="360" loading="lazy" decoding="async">
         <p>Network Support and Security</p>
         <span class="achievement-card__hint">Click to view</span>
@@ -298,6 +379,7 @@
     </p>
     <div class="contact__actions reveal">
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=24-13012@lcctanauan.edu.ph" target="_blank" rel="noopener" class="btn btn--primary">24-13012@lcctanauan.edu.ph</a>
+      <a href="assets/Melecio-Laurente-Resume.pdf" download class="btn btn--ghost">Download Resume (PDF)</a>
       <button type="button" id="copyLinkBtn" class="btn btn--ghost">Copy Link</button>
     </div>
     <div class="contact__socials reveal">
@@ -313,15 +395,21 @@
 </footer>
 
 <!-- ACHIEVEMENT VIEWER -->
-<dialog id="badgeDialog" class="badge-dialog" aria-label="Achievement viewer">
+<button type="button" id="toTop" class="to-top" aria-label="Back to top" hidden>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<dialog id="badgeDialog" class="badge-dialog" aria-label="Image viewer">
   <button type="button" class="badge-dialog__close" id="badgeClose" aria-label="Close">&times;</button>
-  <button type="button" class="badge-dialog__nav badge-dialog__nav--prev" id="badgePrev" aria-label="Previous badge">&#8249;</button>
+  <button type="button" class="badge-dialog__nav badge-dialog__nav--prev" id="badgePrev" aria-label="Previous">&#8249;</button>
   <div class="badge-dialog__body">
     <img id="badgeImg" alt="" width="380" height="380">
     <p id="badgeTitle" class="badge-dialog__title"></p>
-    <a id="badgeDownload" class="btn btn--primary" href="#" download>Download badge</a>
+    <p id="badgeCount" class="badge-dialog__count" aria-live="polite"></p>
+    <p id="badgeDesc" class="badge-dialog__desc"></p>
+    <a id="badgeDownload" class="btn btn--primary" href="#" download>Download</a>
   </div>
-  <button type="button" class="badge-dialog__nav badge-dialog__nav--next" id="badgeNext" aria-label="Next badge">&#8250;</button>
+  <button type="button" class="badge-dialog__nav badge-dialog__nav--next" id="badgeNext" aria-label="Next">&#8250;</button>
 </dialog>
 
 <script src="js/script.js" defer></script>

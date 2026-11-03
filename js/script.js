@@ -135,7 +135,8 @@ if (copyLinkBtn) {
 
 // ---------- Achievement viewer: click a badge to enlarge it and download it ----------
 const badgeDialog = document.getElementById('badgeDialog');
-const badgeCards = Array.from(document.querySelectorAll('.achievement-card'));
+const allViewable = Array.from(document.querySelectorAll('[data-src][data-group]'));
+let badgeCards = allViewable; // the group currently open (badges or one project's screenshots)
 let badgeIndex = 0;
 
 function showBadge(i) {
@@ -145,20 +146,52 @@ function showBadge(i) {
   const title = card.dataset.title;
   const img = document.getElementById('badgeImg');
   img.src = src;
-  img.alt = 'Cisco Networking Academy: ' + title;
+  img.alt = card.dataset.alt || ('Cisco Networking Academy: ' + title);
   document.getElementById('badgeTitle').textContent = title;
+  const desc = document.getElementById('badgeDesc');
+  desc.textContent = card.dataset.desc || '';
+  desc.hidden = !card.dataset.desc;
+  const count = document.getElementById('badgeCount');
+  count.textContent = badgeCards.length > 1 ? (badgeIndex + 1) + ' / ' + badgeCards.length : '';
+  // Warm the next slide so arrows feel instant
+  const nextSrc = badgeCards[(badgeIndex + 1) % badgeCards.length].dataset.src;
+  if (nextSrc !== src) new Image().src = nextSrc;
   const dl = document.getElementById('badgeDownload');
   dl.href = src;
   dl.setAttribute('download', src.split('/').pop());
 }
 
-if (badgeDialog && badgeCards.length) {
-  badgeCards.forEach((card, i) => {
+if (badgeDialog && allViewable.length) {
+  allViewable.forEach((card) => {
     card.addEventListener('click', () => {
-      showBadge(i);
+      // Only step through items from the same group (badges, or one project's screenshots)
+      badgeCards = allViewable.filter((el) => el.dataset.group === card.dataset.group);
+      badgeDialog.classList.toggle('badge-dialog--wide', card.dataset.group !== 'badges');
+      showBadge(badgeCards.indexOf(card));
       badgeDialog.showModal();
     });
   });
+
+  // "Show the project" buttons open that project's slides from the first one
+  document.querySelectorAll('[data-open-group]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const group = btn.dataset.openGroup;
+      badgeCards = allViewable.filter((el) => el.dataset.group === group);
+      badgeDialog.classList.add('badge-dialog--wide');
+      showBadge(0);
+      badgeDialog.showModal();
+    });
+  });
+
+  // Swipe left/right on touch screens
+  let touchX = null;
+  badgeDialog.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  badgeDialog.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 50) showBadge(badgeIndex + (dx < 0 ? 1 : -1));
+  }, { passive: true });
 
   document.getElementById('badgeClose').addEventListener('click', () => badgeDialog.close());
   document.getElementById('badgePrev').addEventListener('click', () => showBadge(badgeIndex - 1));
@@ -174,5 +207,100 @@ if (badgeDialog && badgeCards.length) {
     if (!badgeDialog.open) return;
     if (e.key === 'ArrowLeft') showBadge(badgeIndex - 1);
     if (e.key === 'ArrowRight') showBadge(badgeIndex + 1);
+  });
+}
+
+// ---------- Scroll progress bar ----------
+const progressBar = document.getElementById('scrollProgress');
+if (progressBar) {
+  const updateProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+}
+
+// ---------- Typing role in the hero ----------
+const typedEl = document.getElementById('typed');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (typedEl && !reduceMotion) {
+  const words = typedEl.dataset.words.split('|');
+  let w = 0, c = typedEl.textContent.length, deleting = true;
+  const tick = () => {
+    const word = words[w];
+    if (deleting) {
+      c--;
+      if (c <= 0) { deleting = false; w = (w + 1) % words.length; }
+    } else {
+      c++;
+      if (c >= words[w].length) { deleting = true; typedEl.textContent = words[w]; return setTimeout(tick, 1800); }
+    }
+    typedEl.textContent = (deleting ? word : words[w]).slice(0, Math.max(c, 0));
+    setTimeout(tick, deleting ? 40 : 80);
+  };
+  setTimeout(tick, 1800);
+} else if (typedEl) {
+  document.querySelector('.typed-caret').style.display = 'none';
+}
+
+// ---------- Count-up numbers ----------
+const counters = document.querySelectorAll('[data-count]');
+if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target, end = Number(el.dataset.count), start = performance.now();
+      const step = (now) => {
+        const t = Math.min((now - start) / 900, 1);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      countObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  counters.forEach((el) => countObs.observe(el));
+}
+
+// ---------- Project filter ----------
+const chips = document.querySelectorAll('.filters .chip');
+const projectCards = document.querySelectorAll('.project[data-type]');
+chips.forEach((chip) => {
+  chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    chips.forEach((c) => {
+      const on = c === chip;
+      c.classList.toggle('is-active', on);
+      c.setAttribute('aria-pressed', String(on));
+    });
+    projectCards.forEach((card) => {
+      card.hidden = !(f === 'all' || card.dataset.type === f);
+      if (!card.hidden) card.classList.add('is-visible');
+    });
+  });
+});
+
+// ---------- Back to top button ----------
+const toTop = document.getElementById('toTop');
+if (toTop) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let toTopHideTimer;
+  function updateToTop() {
+    const show = window.scrollY > 600;
+    clearTimeout(toTopHideTimer);
+    if (show) {
+      toTop.hidden = false;
+      requestAnimationFrame(() => toTop.classList.add('is-shown'));
+    } else {
+      toTop.classList.remove('is-shown');
+      toTopHideTimer = setTimeout(() => { toTop.hidden = true; }, 220);
+    }
+  }
+  window.addEventListener('scroll', updateToTop, { passive: true });
+  updateToTop();
+  toTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 }
