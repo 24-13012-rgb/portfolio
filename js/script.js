@@ -161,14 +161,22 @@ function showBadge(i) {
   dl.setAttribute('download', src.split('/').pop());
 }
 
+function openViewer() {
+  if (badgeDialog.open) return;
+  if (typeof badgeDialog.showModal === 'function') badgeDialog.showModal();
+  else badgeDialog.setAttribute('open', '');   // very old browsers
+  document.body.style.overflow = 'hidden';
+}
+
 if (badgeDialog && allViewable.length) {
+  badgeDialog.addEventListener('close', () => { document.body.style.overflow = ''; });
   allViewable.forEach((card) => {
     card.addEventListener('click', () => {
       // Only step through items from the same group (badges, or one project's screenshots)
       badgeCards = allViewable.filter((el) => el.dataset.group === card.dataset.group);
       badgeDialog.classList.toggle('badge-dialog--wide', card.dataset.group !== 'badges');
       showBadge(badgeCards.indexOf(card));
-      badgeDialog.showModal();
+      openViewer();
     });
   });
 
@@ -179,7 +187,7 @@ if (badgeDialog && allViewable.length) {
       badgeCards = allViewable.filter((el) => el.dataset.group === group);
       badgeDialog.classList.add('badge-dialog--wide');
       showBadge(0);
-      badgeDialog.showModal();
+      openViewer();
     });
   });
 
@@ -243,25 +251,6 @@ if (typedEl && !reduceMotion) {
   setTimeout(tick, 1800);
 } else if (typedEl) {
   document.querySelector('.typed-caret').style.display = 'none';
-}
-
-// ---------- Count-up numbers ----------
-const counters = document.querySelectorAll('[data-count]');
-if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target, end = Number(el.dataset.count), start = performance.now();
-      const step = (now) => {
-        const t = Math.min((now - start) / 900, 1);
-        el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
-        if (t < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-      countObs.unobserve(el);
-    });
-  }, { threshold: 0.6 });
-  counters.forEach((el) => countObs.observe(el));
 }
 
 // ---------- Project filter ----------
