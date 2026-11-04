@@ -12,7 +12,7 @@
   --line: #DADFDA;
   --btn-bg: #14181B;
   --btn-ink: #FFFFFF;
-  --nav-bg: rgba(247, 248, 246, 0.86);
+  --nav-bg: rgba(247, 248, 246, 0.96);
   --shadow: rgba(20, 24, 27, 0.18);
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
@@ -23,7 +23,6 @@
   --radius: 10px;
   --nav-height: 65px;
 
-  color-scheme: light;
 }
 
 /* Dark: set by script.js on <html data-theme="dark"> (saved choice, else the device preference) */
@@ -38,10 +37,9 @@
   --line: #27322D;
   --btn-bg: #E8EEEA;
   --btn-ink: #0F1412;
-  --nav-bg: rgba(15, 20, 18, 0.86);
+  --nav-bg: rgba(15, 20, 18, 0.96);
   --shadow: rgba(0, 0, 0, 0.6);
 
-  color-scheme: dark;
 }
 
 /* ============================================
@@ -136,8 +134,6 @@ button { font: inherit; }
   height: var(--nav-height);
   padding: 0 2rem;
   background: var(--nav-bg);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
   transition: box-shadow 0.25s, background-color 0.25s, border-color 0.25s;
 }

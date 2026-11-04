@@ -22,8 +22,7 @@
 <meta name="twitter:description" content="POS, inventory and database systems for real operations.">
 <meta name="twitter:image" content="https://24-13012-rgb.github.io/portfolio/assets/og-image.png">
 
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F8F6">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1412">
+<meta name="theme-color" content="#2B6E5D">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <!-- Runs before the page paints so there is no light/dark flash -->
@@ -44,8 +43,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=20261104">
-<link rel="stylesheet" href="css/additions.css?v=20261104">
+<link rel="stylesheet" href="css/style.css?v=20261106">
+<link rel="stylesheet" href="css/additions.css?v=20261106">
 
 <script type="application/ld+json">
 {
@@ -60,6 +59,7 @@
 </script>
 </head>
 <body>
+<canvas id="bgFx" class="bg-fx" aria-hidden="true"></canvas>
 
 <a href="#main" class="skip-link">Skip to content</a>
 
@@ -72,6 +72,7 @@
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#achievements">Achievements</a>
+    <a href="#education">Education</a>
     <a href="#contact" class="nav__cta">Contact</a>
   </nav>
   <div class="nav__actions">
@@ -108,7 +109,7 @@
 
     <div class="hero__visual reveal">
       <!-- Put your photo at assets/profile.jpg (exact filename). Until then, assets/placeholder.svg is shown. -->
-      <img src="assets/profile.jpg" alt="Portrait of Melecio Laurente" class="hero__photo" width="320" height="320" fetchpriority="high"
+      <img src="assets/profile.jpg" alt="Portrait of Melecio Laurente" class="hero__photo" width="320" height="320"
            onerror="this.onerror=null; this.src='assets/placeholder.svg';">
     </div>
   </section>
@@ -144,18 +145,18 @@
   <section id="skills" class="section">
     <p class="eyebrow reveal">02 — SKILLS</p>
     <h2 class="section__title reveal">Stock on hand.</h2>
-    <div class="skills reveal">
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-01</span>System Design</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-02</span>Database Design</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-03</span>Problem Solving</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-04</span>PHP</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-05</span>C</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-06</span>C++</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-07</span>MySQL</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-08</span>Python</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-09</span>Java</div>
-      <div class="skill-tag"><span class="skill-tag__sku">SKU-10</span>HTML</div>
-    </div>
+    <ul class="skills reveal" aria-label="Skills">
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-01</span>System Design</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-02</span>Database Design</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-03</span>Problem Solving</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-04</span>PHP</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-05</span>C</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-06</span>C++</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-07</span>MySQL</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-08</span>Python</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-09</span>Java</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-10</span>HTML</li>
+    </ul>
   </section>
 
   <!-- PROJECTS
@@ -199,7 +200,6 @@
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
-        <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
       <article class="project reveal" data-type="system">
         <div class="project__head">
@@ -236,7 +236,6 @@
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
-        <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
       <article class="project reveal" data-type="system">
         <div class="project__head">
@@ -271,7 +270,6 @@
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
-        <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
       <article class="project reveal" data-type="game">
         <div class="project__head">
@@ -296,7 +294,6 @@
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
-        <!-- Add a link: <div class="project__links"><a href="https://github.com/24-13012-rgb/REPO" target="_blank" rel="noopener" class="link">Source Code →</a></div> -->
       </article>
     </div>
   </section>
@@ -309,63 +306,92 @@
     <div class="achievements reveal">
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/html-essentials.png" data-title="HTML Essentials" aria-label="View HTML Essentials badge">
         <img src="assets/achievements/thumbs/html-essentials.webp" alt="Cisco Networking Academy: HTML Essentials" width="360" height="360" loading="lazy" decoding="async">
-        <p>HTML Essentials</p>
+        <span class="achievement-card__title">HTML Essentials</span>
         <span class="achievement-card__hint">Click to view</span>
       </button>
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/network-technician-career-path.png" data-title="Network Technician Career Path" aria-label="View Network Technician Career Path badge">
         <img src="assets/achievements/thumbs/network-technician-career-path.webp" alt="Cisco Networking Academy: Network Technician Career Path" width="360" height="360" loading="lazy" decoding="async">
-        <p>Network Technician Career Path</p>
+        <span class="achievement-card__title">Network Technician Career Path</span>
         <span class="achievement-card__hint">Click to view</span>
       </button>
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/networking-basics.png" data-title="Networking Basics" aria-label="View Networking Basics badge">
         <img src="assets/achievements/thumbs/networking-basics.webp" alt="Cisco Networking Academy: Networking Basics" width="360" height="360" loading="lazy" decoding="async">
-        <p>Networking Basics</p>
+        <span class="achievement-card__title">Networking Basics</span>
         <span class="achievement-card__hint">Click to view</span>
       </button>
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/network-addressing-and-basic-troubleshooting.png" data-title="Network Addressing and Basic Troubleshooting" aria-label="View Network Addressing and Basic Troubleshooting badge">
         <img src="assets/achievements/thumbs/network-addressing-and-basic-troubleshooting.webp" alt="Cisco Networking Academy: Network Addressing and Basic Troubleshooting" width="360" height="360" loading="lazy" decoding="async">
-        <p>Network Addressing and Basic Troubleshooting</p>
+        <span class="achievement-card__title">Network Addressing and Basic Troubleshooting</span>
         <span class="achievement-card__hint">Click to view</span>
       </button>
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/networking-devices-and-initial-configuration.png" data-title="Networking Devices and Initial Configuration" aria-label="View Networking Devices and Initial Configuration badge">
         <img src="assets/achievements/thumbs/networking-devices-and-initial-configuration.webp" alt="Cisco Networking Academy: Networking Devices and Initial Configuration" width="360" height="360" loading="lazy" decoding="async">
-        <p>Networking Devices and Initial Configuration</p>
+        <span class="achievement-card__title">Networking Devices and Initial Configuration</span>
         <span class="achievement-card__hint">Click to view</span>
       </button>
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/network-support-and-security.png" data-title="Network Support and Security" aria-label="View Network Support and Security badge">
         <img src="assets/achievements/thumbs/network-support-and-security.webp" alt="Cisco Networking Academy: Network Support and Security" width="360" height="360" loading="lazy" decoding="async">
-        <p>Network Support and Security</p>
+        <span class="achievement-card__title">Network Support and Security</span>
         <span class="achievement-card__hint">Click to view</span>
       </button>
     </div>
 
     <div class="more-achievements reveal">
       <h3>Also completed</h3>
-      <p class="more-achievements__label">MODULES</p>
-      <ul class="more-list">
-        <li><span>Network Security</span><time>Apr 20, 2026</time></li>
-        <li><span>Cybersecurity Threats, Vulnerabilities, and Attacks</span><time>Apr 19, 2026</time></li>
-        <li><span>Network Support</span><time>Apr 19, 2026</time></li>
-        <li><span>Troubleshooting Basics</span><time>Apr 19, 2026</time></li>
-        <li><span>Scaling IP addressing</span><time>Apr 19, 2026</time></li>
-        <li><span>Physical, Data and Network Layers basics</span><time>Apr 19, 2026</time></li>
-        <li><span>Basic Cisco Configuration</span><time>Apr 13, 2026</time></li>
-        <li><span>Transport Services Basics</span><time>Apr 13, 2026</time></li>
-        <li><span>Understanding Network Access</span><time>Apr 08, 2026</time></li>
-        <li><span>Hierarchical Design and Number systems</span><time>Apr 08, 2026</time></li>
-        <li><span>Networking Protocols Basics</span><time>Apr 06, 2026</time></li>
-        <li><span>Network Communications Basics</span><time>Apr 06, 2026</time></li>
-        <li><span>Internet Protocol Basics</span><time>Apr 05, 2026</time></li>
-        <li><span>Network Access Basics</span><time>Apr 05, 2026</time></li>
-        <li><span>Network Basics</span><time>Apr 05, 2026</time></li>
-      </ul>
+      <table class="modules-table">
+        <caption class="more-achievements__label">MODULES COMPLETED</caption>
+        <thead><tr><th scope="col">Module</th><th scope="col">Issued</th></tr></thead>
+        <tbody>
+          <tr><td>Network Security</td><td><time datetime="2026-04-20">Apr 20, 2026</time></td></tr>
+          <tr><td>Cybersecurity Threats, Vulnerabilities, and Attacks</td><td><time datetime="2026-04-19">Apr 19, 2026</time></td></tr>
+          <tr><td>Network Support</td><td><time datetime="2026-04-19">Apr 19, 2026</time></td></tr>
+          <tr><td>Troubleshooting Basics</td><td><time datetime="2026-04-19">Apr 19, 2026</time></td></tr>
+          <tr><td>Scaling IP addressing</td><td><time datetime="2026-04-19">Apr 19, 2026</time></td></tr>
+          <tr><td>Physical, Data and Network Layers basics</td><td><time datetime="2026-04-19">Apr 19, 2026</time></td></tr>
+          <tr><td>Basic Cisco Configuration</td><td><time datetime="2026-04-13">Apr 13, 2026</time></td></tr>
+          <tr><td>Transport Services Basics</td><td><time datetime="2026-04-13">Apr 13, 2026</time></td></tr>
+          <tr><td>Understanding Network Access</td><td><time datetime="2026-04-08">Apr 08, 2026</time></td></tr>
+          <tr><td>Hierarchical Design and Number systems</td><td><time datetime="2026-04-08">Apr 08, 2026</time></td></tr>
+          <tr><td>Networking Protocols Basics</td><td><time datetime="2026-04-06">Apr 06, 2026</time></td></tr>
+          <tr><td>Network Communications Basics</td><td><time datetime="2026-04-06">Apr 06, 2026</time></td></tr>
+          <tr><td>Internet Protocol Basics</td><td><time datetime="2026-04-05">Apr 05, 2026</time></td></tr>
+          <tr><td>Network Access Basics</td><td><time datetime="2026-04-05">Apr 05, 2026</time></td></tr>
+          <tr><td>Network Basics</td><td><time datetime="2026-04-05">Apr 05, 2026</time></td></tr>
+        </tbody>
+      </table>
       <p class="more-achievements__note">All issued by Cisco Networking Academy.</p>
+    </div>
+  </section>
+
+  <!-- EDUCATION & EXPERIENCE -->
+  <section id="education" class="section">
+    <p class="eyebrow reveal">05 — EDUCATION &amp; EXPERIENCE</p>
+    <h2 class="section__title reveal">Where I learn and build.</h2>
+    <div class="edu-grid">
+      <article class="edu-card reveal">
+        <p class="edu-card__label">EDUCATION</p>
+        <h3>Bachelor of Science in Information Technology</h3>
+        <p class="edu-card__where">La Consolacion College Tanauan, Tanauan City, Batangas</p>
+        <p>Currently enrolled. Studying programming, database design and web technology.</p>
+      </article>
+      <article class="edu-card reveal">
+        <p class="edu-card__label">EXPERIENCE</p>
+        <h3>Developer, school and business systems</h3>
+        <p class="edu-card__where">Academic and personal projects</p>
+        <p>Built ElectroPOS, an HR Ticket System, a School Library System and the Connect4 game. See <a href="#projects" class="link">the projects</a> for screenshots of each system.</p>
+      </article>
+      <article class="edu-card reveal">
+        <p class="edu-card__label">TRAINING</p>
+        <h3>Cisco Networking Academy</h3>
+        <p class="edu-card__where">April &ndash; August 2026</p>
+        <p>Completed 15 networking modules and earned six badges, including Network Technician Career Path and HTML Essentials. See <a href="#achievements" class="link">the achievements</a>.</p>
+      </article>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="section section--contact">
-    <p class="eyebrow reveal">05 — CONTACT</p>
+    <p class="eyebrow reveal">06 — CONTACT</p>
     <h2 class="section__title reveal">Let's build something.</h2>
     <p class="contact__body reveal">
       Open to on-the-job training placements, internships, and small projects.
@@ -377,7 +403,7 @@
       <button type="button" id="copyLinkBtn" class="btn btn--ghost">Copy Link</button>
     </div>
     <div class="contact__socials reveal">
-      <a href="https://github.com/24-13012-rgb" target="_blank" rel="noopener" class="link">GitHub</a>
+      <a href="https://github.com/24-13012-rgb" target="_blank" rel="noopener" class="link" aria-label="GitHub profile of Melecio Laurente">GitHub profile</a>
     </div>
   </section>
 
@@ -397,7 +423,7 @@
   <button type="button" class="badge-dialog__close" id="badgeClose" aria-label="Close">&times;</button>
   <button type="button" class="badge-dialog__nav badge-dialog__nav--prev" id="badgePrev" aria-label="Previous">&#8249;</button>
   <div class="badge-dialog__body">
-    <img id="badgeImg" alt="" width="380" height="380">
+    <img id="badgeImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=" alt="" width="380" height="380">
     <p id="badgeTitle" class="badge-dialog__title"></p>
     <p id="badgeCount" class="badge-dialog__count" aria-live="polite"></p>
     <p id="badgeDesc" class="badge-dialog__desc"></p>
@@ -406,6 +432,7 @@
   <button type="button" class="badge-dialog__nav badge-dialog__nav--next" id="badgeNext" aria-label="Next">&#8250;</button>
 </dialog>
 
-<script src="js/script.js?v=20261104" defer></script>
+<script src="js/script.js?v=20261106" defer></script>
+<script src="js/background.js?v=20261106" defer></script>
 </body>
 </html>

@@ -18,6 +18,10 @@ assets/
   achievements/thumbs/  small WebP versions shown on the page
 ```
 
+## Sections
+Home, About, Skills, Projects (with slideshows), Achievements, Education & Experience, Contact.
+To change your school or year, edit the Education card in `index.html` (search for `id="education"`).
+
 ## Update it
 1. Edit `index.html` in VS Code.
 2. GitHub Desktop: write a summary, **Commit to main**, then **Push origin**.
@@ -36,3 +40,6 @@ block, paste it under the last one, and change the text.
 ## Theme
 Light and dark. The page follows the visitor's device setting until they press
 the sun/moon button; their choice is then remembered in their browser.
+
+## Background effect
+`js/background.js` draws an original "binary field" on a `<canvas id="bgFx">`: a faint grid of 0s and 1s. Moving the mouse lights up and flips the digits under it and leaves a fading trail; clicking or tapping sends a ripple across the page. It follows light/dark mode, sleeps when nothing is lit, and stays still for visitors who prefer reduced motion. To remove it, delete the `<canvas>` and the `background.js` script tag in `index.html`.
