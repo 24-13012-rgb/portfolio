@@ -43,3 +43,6 @@ the sun/moon button; their choice is then remembered in their browser.
 
 ## Background effect
 `js/background.js` draws an original "binary field" on a `<canvas id="bgFx">`: a faint grid of 0s and 1s. Moving the mouse lights up and flips the digits under it and leaves a fading trail; clicking or tapping sends a ripple across the page. It follows light/dark mode, sleeps when nothing is lit, and stays still for visitors who prefer reduced motion. To remove it, delete the `<canvas>` and the `background.js` script tag in `index.html`.
+
+## Resume download effect
+Clicking "Download Resume (PDF)" still downloads `assets/Melecio-Laurente-Resume.pdf` as normal. On top of that, a small resume page drops in above the button and fills with lines, then 0s and 1s burst out of the button, and the label changes to "Saved". With reduced motion only the label changes. The code is at the end of `js/script.js`; the styles are at the end of `css/additions.css`.

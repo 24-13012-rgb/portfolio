@@ -293,3 +293,60 @@ if (toTop) {
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 }
+
+// ---------- Resume download effect ----------
+// The download itself is the normal link. This only adds the animation:
+// a little resume page drops in and "fills up", then 0s and 1s burst out of the button.
+const resumeBtn = document.getElementById('resumeBtn');
+if (resumeBtn) {
+  const label = resumeBtn.querySelector('.btn__label');
+  const originalLabel = label.textContent;
+  let resumeTimer;
+
+  resumeBtn.addEventListener('click', () => {
+    clearTimeout(resumeTimer);
+    resumeBtn.classList.remove('is-saved');
+    resumeBtn.classList.add('is-saving');
+    label.textContent = 'Preparing…';
+    resumeTimer = setTimeout(() => {
+      resumeBtn.classList.remove('is-saving');
+      resumeBtn.classList.add('is-saved');
+      label.textContent = 'Saved ✓ Resume.pdf';
+      resumeTimer = setTimeout(() => {
+        resumeBtn.classList.remove('is-saved');
+        label.textContent = originalLabel;
+      }, 2600);
+    }, reduceMotion ? 300 : 1200);
+
+    if (reduceMotion) return;
+
+    const rect = resumeBtn.getBoundingClientRect();
+    const fx = document.createElement('div');
+    fx.className = 'dl-fx';
+    fx.setAttribute('aria-hidden', 'true');
+    fx.style.cssText = 'left:' + rect.left + 'px;top:' + rect.top + 'px;width:' + rect.width + 'px;height:' + rect.height + 'px';
+    fx.innerHTML = '<div class="dl-sheet"><i></i><i></i><i></i><i></i></div>';
+    document.body.appendChild(fx);
+
+    // Bits burst out once the page has "landed"
+    setTimeout(() => {
+      for (let n = 0; n < 18; n++) {
+        const bit = document.createElement('span');
+        bit.className = 'dl-bit';
+        bit.textContent = Math.random() < 0.5 ? '0' : '1';
+        const angle = (Math.PI * 2 * n) / 18 + Math.random() * 0.4;
+        const dist = 50 + Math.random() * 70;
+        const dx = Math.cos(angle) * dist * 1.4, dy = Math.sin(angle) * dist;
+        fx.appendChild(bit);
+        if (bit.animate) {
+          bit.animate([
+            { transform: 'translate(0, 0) scale(0.6)', opacity: 0 },
+            { transform: 'translate(' + dx * 0.3 + 'px, ' + dy * 0.3 + 'px) scale(1)', opacity: 1, offset: 0.15 },
+            { transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(1)', opacity: 0 }
+          ], { duration: 900, delay: Math.random() * 120, easing: 'ease-out', fill: 'forwards' });
+        }
+      }
+    }, 700);
+    setTimeout(() => fx.remove(), 2000);
+  });
+}
