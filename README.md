@@ -46,3 +46,6 @@ the sun/moon button; their choice is then remembered in their browser.
 
 ## Resume download effect
 Clicking "Download Resume (PDF)" still downloads `assets/Melecio-Laurente-Resume.pdf` as normal. On top of that, a small resume page drops in above the button and fills with lines, then 0s and 1s burst out of the button, and the label changes to "Saved". With reduced motion only the label changes. The code is at the end of `js/script.js`; the styles are at the end of `css/additions.css`.
+
+## Floating stack layer
+`js/floating.js` adds a second background layer on `<canvas id="bgFloat">`: small code tags from the stack I use (PHP, MySQL, ping, C++, tickets...) that drift slowly upward behind the page. They sit at different depths, so scrolling and moving the mouse shifts near ones more than far ones. They are very faint, never block clicks, follow light/dark mode, pause when the tab is hidden, and stay still with reduced motion. To remove, delete the `bgFloat` canvas and the `floating.js` script tag in `index.html`.
