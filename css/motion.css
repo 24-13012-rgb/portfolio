@@ -1,0 +1,144 @@
+/* ==========================================================
+   MOTION: entrance animations, small loops and a moving
+   background of drifting shapes (red / yellow / ink).
+   ========================================================== */
+
+/* ---------- Moving background shapes ---------- */
+.bg-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  contain: strict;
+}
+.bg-shapes__layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.shape { position: absolute; display: block; opacity: 0.5; will-change: transform; }
+
+.shape--dot { border-radius: 50%; background: var(--accent); }
+.shape--dot-y { border-radius: 50%; background: var(--sticker); border: 3px solid var(--edge); }
+.shape--ring { border-radius: 50%; border: 5px solid var(--edge); }
+.shape--ring-r { border-radius: 50%; border: 5px solid var(--accent); }
+.shape--star { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4 L61 39 L96 50 L61 61 L50 96 L39 61 L4 50 L39 39 Z' fill='%23FFD84D' stroke='%231B1210' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.shape--plus { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 V90 M10 50 H90' stroke='%23D42E20' stroke-width='16' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.shape--squig { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 30'%3E%3Cpath d='M4 18 Q 18 2 32 16 T 60 16 T 88 16 T 116 16 T 156 14' fill='none' stroke='%231B1210' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.shape--tri { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 12 L92 86 H8 Z' fill='none' stroke='%23D42E20' stroke-width='7' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+:root[data-theme="dark"] .shape--star { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4 L61 39 L96 50 L61 61 L50 96 L39 61 L4 50 L39 39 Z' fill='%23FFD84D' stroke='%23F3EFE4' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+:root[data-theme="dark"] .shape--squig { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 30'%3E%3Cpath d='M4 18 Q 18 2 32 16 T 60 16 T 88 16 T 116 16 T 156 14' fill='none' stroke='%23F3EFE4' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"); }
+:root[data-theme="dark"] .shape { opacity: 0.4; }
+
+/* where each one lives, how big it is and how it moves */
+.shape--1 { left: 3%;  top: 20%; width: 90px;  height: 90px;  animation: drift-a 11s ease-in-out infinite; }
+.shape--2 { left: 91%; top: 10%; width: 120px; height: 120px; animation: drift-b 14s ease-in-out infinite; }
+.shape--3 { left: 84%; top: 60%; width: 70px;  height: 70px;  animation: twirl 16s linear infinite; }
+.shape--4 { left: 5%;  top: 76%; width: 170px; height: 32px;  animation: drift-c 9s ease-in-out infinite; }
+.shape--5 { left: 47%; top: 6%;  width: 50px;  height: 50px;  animation: twirl 12s linear infinite; }
+.shape--6 { left: 72%; top: 84%; width: 80px;  height: 80px;  animation: drift-b 13s ease-in-out infinite reverse; }
+.shape--7 { left: 28%; top: 90%; width: 44px;  height: 44px;  animation: drift-a 8s ease-in-out infinite; }
+.shape--8 { left: 1.5%; top: 50%; width: 66px;  height: 66px;  animation: drift-c 12s ease-in-out infinite reverse; }
+.shape--9 { left: 60%; top: 38%; width: 40px;  height: 40px;  animation: twirl 9s linear infinite reverse; }
+.shape--10 { left: 93%; top: 36%; width: 150px; height: 28px; animation: drift-a 10s ease-in-out infinite; }
+
+@keyframes drift-a { 0% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(18px, -34px) rotate(14deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
+@keyframes drift-b { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-30px, 26px) scale(1.12); } 100% { transform: translate(0, 0) scale(1); } }
+@keyframes drift-c { 0% { transform: translate(0, 0) rotate(-8deg); } 50% { transform: translate(34px, 12px) rotate(6deg); } 100% { transform: translate(0, 0) rotate(-8deg); } }
+@keyframes twirl { to { transform: rotate(360deg); } }
+
+/* ---------- Entrance animations: things pop in one after another ---------- */
+@keyframes rise { 0% { opacity: 0; transform: translateY(38px); } }
+@keyframes rise-big { 0% { opacity: 0; transform: translateY(90px) rotate(2deg); } }
+@keyframes pop { 0% { opacity: 0; transform: scale(0.55) rotate(-8deg); } 65% { transform: scale(1.07) rotate(1.5deg); } }
+@keyframes wipe { 0% { width: 0; } }
+
+/* hero */
+.deck .slide.is-active .status-pill { animation: pop 0.6s 0.1s backwards cubic-bezier(0.2, 0.8, 0.3, 1.2), wobble 4s 0.9s ease-in-out infinite; }
+.deck .slide.is-active .hero .eyebrow { animation: rise 0.6s 0.2s backwards ease-out; }
+.deck .slide.is-active .hero__name span:first-child { animation: rise-big 0.8s 0.25s backwards cubic-bezier(0.2, 0.8, 0.2, 1); }
+.deck .slide.is-active .hero__name span:last-child { animation: rise-big 0.8s 0.4s backwards cubic-bezier(0.2, 0.8, 0.2, 1); }
+.deck .slide.is-active .hero__tagline { animation: rise 0.7s 0.6s backwards ease-out; }
+.deck .slide.is-active .hero__actions { animation: rise 0.7s 0.75s backwards ease-out; }
+.deck .slide.is-active .hero__visual { animation: pop 0.9s 0.3s backwards cubic-bezier(0.2, 0.8, 0.3, 1.15); }
+.deck .slide.is-active .marquee { animation: rise 0.7s 0.9s backwards ease-out; }
+
+/* every other slide: label, title, then the content */
+.deck .slide.is-active .eyebrow { animation: rise 0.55s 0.05s backwards ease-out; }
+.deck .slide.is-active .section__title { animation: rise 0.7s 0.12s backwards cubic-bezier(0.2, 0.8, 0.2, 1); }
+.deck .slide.is-active .section__title::after { animation: wipe 0.7s 0.55s backwards ease-out; }
+.deck .slide.is-active .about__body { animation: rise 0.7s 0.3s backwards ease-out; }
+.deck .slide.is-active .about__body + .about__body { animation-delay: 0.45s; }
+.deck .slide.is-active .about__body + .about__body + .about__body { animation-delay: 0.6s; }
+.deck .slide.is-active .filters { animation: rise 0.6s 0.3s backwards ease-out; }
+.deck .slide.is-active .project { animation: rise 0.8s 0.4s backwards cubic-bezier(0.2, 0.8, 0.2, 1); }
+.deck .slide.is-active .project + .project { animation-delay: 0.55s; }
+.deck .slide.is-active .project + .project + .project { animation-delay: 0.7s; }
+.deck .slide.is-active .project + .project + .project + .project { animation-delay: 0.85s; }
+.deck .slide.is-active .achievement-card { animation: pop 0.6s backwards cubic-bezier(0.2, 0.8, 0.3, 1.2); }
+.deck .slide.is-active .achievement-card:nth-child(1) { animation-delay: 0.25s; }
+.deck .slide.is-active .achievement-card:nth-child(2) { animation-delay: 0.35s; }
+.deck .slide.is-active .achievement-card:nth-child(3) { animation-delay: 0.45s; }
+.deck .slide.is-active .achievement-card:nth-child(4) { animation-delay: 0.55s; }
+.deck .slide.is-active .achievement-card:nth-child(5) { animation-delay: 0.65s; }
+.deck .slide.is-active .achievement-card:nth-child(6) { animation-delay: 0.75s; }
+.deck .slide.is-active .more-achievements { animation: rise 0.7s 0.9s backwards ease-out; }
+.deck .slide.is-active .edu-card { animation: rise 0.8s backwards cubic-bezier(0.2, 0.8, 0.2, 1); }
+.deck .slide.is-active .edu-card:nth-child(1) { animation-delay: 0.3s; }
+.deck .slide.is-active .edu-card:nth-child(2) { animation-delay: 0.45s; }
+.deck .slide.is-active .edu-card:nth-child(3) { animation-delay: 0.6s; }
+.deck .slide.is-active .contact__body { animation: rise 0.7s 0.3s backwards ease-out; }
+.deck .slide.is-active .contact__actions .btn { animation: pop 0.6s backwards cubic-bezier(0.2, 0.8, 0.3, 1.2); }
+.deck .slide.is-active .contact__actions .btn:nth-child(1) { animation-delay: 0.4s; }
+.deck .slide.is-active .contact__actions .btn:nth-child(2) { animation-delay: 0.5s; }
+.deck .slide.is-active .contact__actions .btn:nth-child(3) { animation-delay: 0.6s; }
+.deck .slide.is-active .contact__socials { animation: rise 0.6s 0.75s backwards ease-out; }
+.deck .slide.is-active .slide-next { animation: rise 0.6s 1s backwards ease-out; }
+
+/* skill tags pop in like stickers being slapped on */
+.deck .slide.is-active .skill-tag { animation: pop 0.55s backwards cubic-bezier(0.2, 0.8, 0.3, 1.25); }
+.deck .slide.is-active .skill-tag:nth-child(1) { animation-delay: 0.20s; }
+.deck .slide.is-active .skill-tag:nth-child(2) { animation-delay: 0.27s; }
+.deck .slide.is-active .skill-tag:nth-child(3) { animation-delay: 0.34s; }
+.deck .slide.is-active .skill-tag:nth-child(4) { animation-delay: 0.41s; }
+.deck .slide.is-active .skill-tag:nth-child(5) { animation-delay: 0.48s; }
+.deck .slide.is-active .skill-tag:nth-child(6) { animation-delay: 0.55s; }
+.deck .slide.is-active .skill-tag:nth-child(7) { animation-delay: 0.62s; }
+.deck .slide.is-active .skill-tag:nth-child(8) { animation-delay: 0.69s; }
+.deck .slide.is-active .skill-tag:nth-child(9) { animation-delay: 0.76s; }
+.deck .slide.is-active .skill-tag:nth-child(10) { animation-delay: 0.83s; }
+
+/* ---------- Small loops that keep the page alive ---------- */
+@keyframes bob { 0% { transform: translateY(0); } 50% { transform: translateY(-9px); } 100% { transform: translateY(0); } }
+@keyframes wobble { 0% { transform: rotate(-2deg); } 50% { transform: rotate(-5deg) scale(1.04); } 100% { transform: rotate(-2deg); } }
+@keyframes tilt { 0% { transform: rotate(3deg); } 50% { transform: rotate(5.5deg); } 100% { transform: rotate(3deg); } }
+@keyframes sway { 0% { transform: rotate(-1.5deg) scale(1); } 50% { transform: rotate(1.5deg) scale(1.03); } 100% { transform: rotate(-1.5deg) scale(1); } }
+@keyframes spin-diamond { to { transform: rotate(405deg); } }
+@keyframes ring-pulse { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 0; transform: scale(1.18, 1.5); } }
+
+.hero__photo { animation: bob 5s ease-in-out infinite; }
+.hero__visual::before { animation: tilt 6s ease-in-out infinite; }
+.hero__visual::after { animation: sway 5s ease-in-out infinite; }
+.status-pill { animation: wobble 4s ease-in-out infinite; }
+.eyebrow::before { animation: spin-diamond 8s linear infinite; }
+.hero__actions .btn--primary { position: relative; }
+.hero__actions .btn--primary::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; border: 2px solid var(--accent); border-radius: 999px; pointer-events: none; animation: ring-pulse 2.2s ease-out infinite; }
+.nav__mark-dot { display: inline-block; animation: bob 1.8s ease-in-out infinite; }
+.deck-tab.is-active { animation: pop 0.45s cubic-bezier(0.2, 0.8, 0.3, 1.3); }
+
+/* hover wiggles */
+@keyframes jiggle { 0% { transform: rotate(0deg); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } 100% { transform: rotate(0deg); } }
+.btn:hover { animation: jiggle 0.35s ease-in-out; }
+.achievement-card:hover img { animation: jiggle 0.45s ease-in-out; }
+.edu-card:hover h3 { color: inherit; }
+
+/* ---------- Respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .bg-shapes .shape, .marquee__track, .hero__photo, .hero__visual::before, .hero__visual::after,
+  .status-pill, .eyebrow::before, .hero__actions .btn--primary::after, .nav__mark-dot { animation: none !important; }
+}
+@media (max-width: 700px) {
+  .shape--3, .shape--6, .shape--9, .shape--10 { display: none; }
+  .shape--2 { left: 80%; width: 80px; height: 80px; }
+}
+@media print { .bg-shapes { display: none; } }

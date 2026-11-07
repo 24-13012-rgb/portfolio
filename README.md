@@ -49,3 +49,28 @@ Clicking "Download Resume (PDF)" still downloads `assets/Melecio-Laurente-Resume
 
 ## Floating stack layer
 `js/floating.js` adds a second background layer on `<canvas id="bgFloat">`: small code tags from the stack I use (PHP, MySQL, ping, C++, tickets...) that drift slowly upward behind the page. They sit at different depths, so scrolling and moving the mouse shifts near ones more than far ones. They are very faint, never block clicks, follow light/dark mode, pause when the tab is hidden, and stay still with reduced motion. To remove, delete the `bgFloat` canvas and the `floating.js` script tag in `index.html`.
+
+## Theme ("Cream & Red")
+The look lives in `css/theme.css`, loaded after the other stylesheets: cream paper background, one red accent, huge condensed headlines (Anton), monospace labels (Space Mono), thick outlines with hard shadows, sticker tags and hand-drawn scribbles around the photo. Dark mode is an ink-brown version of the same palette. Fonts are self-hosted in `assets/fonts/`, so no external font requests. Change the colours in the `:root` block at the top of `theme.css`. The scrolling red strip under the hero is decorative and only repeats words already on the page.
+
+## Slide mode
+`js/deck.js` + `css/deck.css` turn each section into its own slide. Move with the bottom bar (arrows and numbered tabs), the "Next: ..." button at the end of each slide, the top menu, the left/right arrow keys, or by swiping on a phone. The address updates (#projects etc.), so a link opens on that slide and the browser Back button works. If JavaScript is off, the page is one normal scrolling page. To go back to scrolling, remove the `deck.css` and `deck.js` lines in `index.html`.
+
+## Motion
+`css/motion.css` + `js/motion.js` add the animations: a moving background of drifting red/yellow/ink shapes (they also shift slightly with the mouse), things that pop and rise in one after another each time a slide opens, a floating photo, a wobbling sticker, a pulsing "View Projects" button and hover wiggles. With "reduce motion" turned on in the visitor's device, the loops stop. To remove, delete the `motion.css` and `motion.js` lines and the `bg-shapes` block in `index.html`.
+
+## Smoothness notes
+Switching slides jumps to the top instantly (no gliding scroll), a sideways scrollbar can't appear during the slide-in, pictures on the other slides are fetched once the page is idle, fonts are preloaded, the slides stay hidden for a split second at load so the whole page never flashes, and the floating tags draw at about 30 fps. The pulsing button animates a ring (not a box-shadow), which is much cheaper to draw.
+
+## New features (features.css / features.js)
+- **What I did** (Problem / What I built / Result) on every project card. Edit the text in the `<div class="did">` blocks.
+- **Case study slide** for ElectroPOS (`#casestudy`) with screenshots that open the viewer at that slide.
+- **Quick facts** card and **How I work** steps on the About slide.
+- **Goal line** sticker on the hero photo (`<p class="hero__goal">`).
+- **Skill bars**: change `data-level="1|2|3"` (learning / comfortable / strong) on each `.skill-tag__meter`.
+- **Looping previews** on the project cards (cycles through that project's screenshots; pauses on hover).
+- **Resume preview** pop-up next to the download button.
+- **Contact form**: works now by opening Gmail with the message filled in. To send straight to your inbox, make a free form at formspree.io and paste its URL into `data-endpoint=""` on `<form id="contactForm">`.
+- **Keyboard hint** that fades after a few seconds (shown once per visit, desktop only).
+- **Red wipe** between slides (skipped when "reduce motion" is on).
+- **Awards / certificates**: copy an `achievement-card` button in the Achievements slide (a comment shows where).

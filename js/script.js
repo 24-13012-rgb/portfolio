@@ -58,7 +58,7 @@ const nav = document.querySelector('.nav');
 function onScroll() {
   nav.classList.toggle('is-scrolled', window.scrollY > 8);
   // Near the top (hero) no section link should look active
-  if (window.scrollY < 200) {
+  if (window.scrollY < 200 && !root.classList.contains('deck')) {
     document.querySelectorAll('.nav__links a[aria-current]').forEach((a) => a.removeAttribute('aria-current'));
   }
 }
@@ -186,7 +186,7 @@ if (badgeDialog && allViewable.length) {
       const group = btn.dataset.openGroup;
       badgeCards = allViewable.filter((el) => el.dataset.group === group);
       badgeDialog.classList.add('badge-dialog--wide');
-      showBadge(0);
+      showBadge(Math.min(parseInt(btn.dataset.openIndex || '0', 10) || 0, badgeCards.length - 1));
       openViewer();
     });
   });
@@ -222,6 +222,7 @@ if (badgeDialog && allViewable.length) {
 const progressBar = document.getElementById('scrollProgress');
 if (progressBar) {
   const updateProgress = () => {
+    if (root.classList.contains('deck')) return;   // slide mode draws its own progress
     const max = document.documentElement.scrollHeight - window.innerHeight;
     progressBar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
   };

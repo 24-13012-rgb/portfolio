@@ -1,0 +1,109 @@
+/* ==========================================================
+   Slide mode (only active when JavaScript adds .deck to <html>)
+   ========================================================== */
+.deck .slide { display: none; }
+.deck .slide.is-active { display: block; min-height: calc(100vh - 65px); }
+.deck .slide.from-right { animation: slide-from-right 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.deck .slide.from-left { animation: slide-from-left 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+@keyframes slide-from-right { from { opacity: 0; transform: translateX(70px); } to { opacity: 1; transform: none; } }
+@keyframes slide-from-left { from { opacity: 0; transform: translateX(-70px); } to { opacity: 1; transform: none; } }
+
+.deck body { padding-bottom: 5.5rem; }
+.deck .section { padding: 3.5rem 2rem 4rem; }
+.deck .hero { padding-top: 3rem; }
+.deck .section--contact { border-top: 0; }
+
+/* Big "Next" button at the end of a slide */
+.slide-next { margin-top: 3rem; }
+.deck .more-achievements + .slide-next { margin-top: 3rem; }
+
+/* ---------- Bottom bar ---------- */
+.deck-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: calc(100vw - 1.5rem);
+  padding: 0.4rem;
+  background: var(--surface);
+  border: 2px solid var(--edge);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--edge);
+}
+.deck-bar__tabs { display: flex; gap: 0.2rem; }
+.deck-bar__arrow {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid var(--edge);
+  border-radius: 50%;
+  background: var(--sticker);
+  color: var(--sticker-ink);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.15s, color 0.15s;
+}
+.deck-bar__arrow:hover:not(:disabled) { background: var(--accent); color: #FFFFFF; transform: scale(1.08); }
+.deck-bar__arrow:disabled { opacity: 0.35; cursor: default; }
+.deck-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+.deck-tab__num { color: var(--accent); }
+.deck-tab:hover { background: var(--accent-soft); }
+.deck-tab.is-active { background: var(--accent); color: #FFFFFF; border-color: var(--edge); }
+.deck-tab.is-active .deck-tab__num { color: #FFFFFF; }
+.deck-bar button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Back-to-top sits above the bar */
+.deck .to-top { bottom: 5.5rem; }
+
+@media (max-width: 900px) {
+  .deck-tab { padding: 0.5rem 0.55rem; }
+  .deck-tab__label { display: none; }
+  .deck-tab.is-active .deck-tab__label { display: inline; }
+}
+@media (max-width: 520px) {
+  .deck-tab__num { display: none; }
+  .deck-bar { gap: 0.15rem; padding: 0.3rem; }
+  .deck-bar__arrow { width: 2.2rem; height: 2.2rem; }
+  .deck-tab { padding: 0.55rem 0.45rem; }
+  .deck-tab::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--ink); }
+  .deck-tab.is-active::before { display: none; }
+  .deck-tab.is-active .deck-tab__num { display: none; }
+  .deck .section { padding: 3rem 1.25rem 3rem; }
+}
+@media print { .deck-bar { display: none; } .deck .slide { display: block; } }
+
+/* Fit the hero (name, text, buttons) above the bar on a normal laptop screen */
+.deck .hero { padding: 1.25rem 2rem 1.5rem; }
+.deck .hero__name { font-size: clamp(4rem, 11vw, 8.2rem); margin-bottom: 1.1rem; }
+.deck .hero__tagline { margin-bottom: 1.5rem; font-size: 1.05rem; }
+.deck .hero__photo { height: 340px; }
+.deck .status-pill { margin-bottom: 0.9rem; }
+@media (max-width: 860px) { .deck .hero { padding: 1.5rem 1.25rem 2rem; } }
+
+/* Until the slide script runs, keep the slides hidden so the whole page never flashes */
+.deck-pending .slide { visibility: hidden; }
+
+/* The sliding transition must never create a sideways scrollbar */
+.deck main { overflow-x: hidden; }

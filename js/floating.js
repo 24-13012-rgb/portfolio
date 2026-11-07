@@ -121,6 +121,7 @@
 
   function frame(now) {
     if (!running) return;
+    if (now - last < 32) { requestAnimationFrame(frame); return; }   // ~30 fps is plenty for slow drift
     var dt = Math.min((now - last) / 1000, 0.1);
     last = now;
     clock += dt;

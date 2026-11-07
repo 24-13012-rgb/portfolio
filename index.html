@@ -22,14 +22,16 @@
 <meta name="twitter:description" content="POS, inventory and database systems for real operations.">
 <meta name="twitter:image" content="https://24-13012-rgb.github.io/portfolio/assets/og-image.png">
 
-<meta name="theme-color" content="#2B6E5D">
+<meta name="theme-color" content="#D42E20">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <!-- Runs before the page paints so there is no light/dark flash -->
 <script>
 (function () {
   var root = document.documentElement;
-  root.classList.add('js');
+  root.classList.add('js', 'deck-pending');
+  // Failsafe: never leave the page hidden if the slide script does not load
+  setTimeout(function () { root.classList.remove('deck-pending'); }, 3000);
   var theme = null;
   try { theme = localStorage.getItem('theme'); } catch (e) {}
   if (theme !== 'dark' && theme !== 'light') {
@@ -39,12 +41,17 @@
 })();
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="css/style.css?v=20261108">
-<link rel="stylesheet" href="css/additions.css?v=20261108">
+<link rel="stylesheet" href="css/style.css?v=20261113">
+<link rel="stylesheet" href="css/additions.css?v=20261113">
+<link rel="stylesheet" href="css/theme.css?v=20261113">
+<link rel="stylesheet" href="css/deck.css?v=20261113">
+<link rel="stylesheet" href="css/motion.css?v=20261113">
+<link rel="stylesheet" href="css/features.css?v=20261113">
 
 <script type="application/ld+json">
 {
@@ -61,6 +68,7 @@
 <body>
 <canvas id="bgFx" class="bg-fx" aria-hidden="true"></canvas>
 <canvas id="bgFloat" class="bg-fx" aria-hidden="true"></canvas>
+<div class="bg-shapes" aria-hidden="true"><div class="bg-shapes__layer bg-shapes__layer--far"><span class="shape shape--dot shape--1"></span><span class="shape shape--star shape--3"></span><span class="shape shape--plus shape--5"></span><span class="shape shape--dot-y shape--7"></span><span class="shape shape--star shape--9"></span><span class="shape shape--squig shape--10"></span></div><div class="bg-shapes__layer bg-shapes__layer--near"><span class="shape shape--ring shape--2"></span><span class="shape shape--squig shape--4"></span><span class="shape shape--tri shape--6"></span><span class="shape shape--ring-r shape--8"></span></div></div>
 
 <a href="#main" class="skip-link">Skip to content</a>
 
@@ -89,12 +97,13 @@
 
 <main id="main">
 
-  <!-- HERO -->
+  <!-- HERO (slide 1) -->
+  <div id="home" class="slide is-active">
   <section class="hero">
     <div class="hero__text reveal">
       <p class="status-pill">Open to OJT &amp; internships</p>
       <p class="eyebrow">IT STUDENT — <span id="typed" data-words="SYSTEMS BUILDER|PHP DEVELOPER|DATABASE DESIGNER|PROBLEM SOLVER">SYSTEMS BUILDER</span><span class="typed-caret" aria-hidden="true"></span></p>
-      <h1 class="hero__name">Melecio<br>Laurente</h1>
+      <h1 class="hero__name"><span>Melecio</span><br><span>Laurente</span></h1>
       <p class="hero__tagline">
         I'm an IT student and developer who builds systems people actually use
         &mdash; a point-of-sale and inventory system for an electric store, a
@@ -112,11 +121,17 @@
       <!-- Put your photo at assets/profile.jpg (exact filename). Until then, assets/placeholder.svg is shown. -->
       <img src="assets/profile.jpg" alt="Portrait of Melecio Laurente" class="hero__photo" width="320" height="320"
            onerror="this.onerror=null; this.src='assets/placeholder.svg';">
+      <p class="hero__goal">Build it right. Watch it work. Make it better.</p>
     </div>
   </section>
 
+
+  <!-- Scrolling strip (decorative, repeats words from this page) -->
+  <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>IT Student ★</span><span>Systems Builder ★</span><span>Open to OJT &amp; internships ★</span><span>PHP ★</span><span>MySQL ★</span><span>Java ★</span><span>C++ ★</span><span>IT Student ★</span><span>Systems Builder ★</span><span>Open to OJT &amp; internships ★</span><span>PHP ★</span><span>MySQL ★</span><span>Java ★</span><span>C++ ★</span></div></div>
+  </div>
+
   <!-- ABOUT -->
-  <section id="about" class="section">
+  <section id="about" class="slide section">
     <p class="eyebrow reveal">01 — ABOUT</p>
     <div class="about reveal">
       <h2 class="section__title">Turning everyday operations<br>into working software.</h2>
@@ -139,31 +154,52 @@
         I'm looking for an on-the-job training or internship placement where I
         can keep building real systems and learn from a team that ships them.
       </p>
+          <aside class="facts" aria-label="Quick facts">
+        <p class="facts__title">Quick facts</p>
+        <dl>
+          <div><dt>Based in</dt><dd>Batangas, Philippines</dd></div>
+          <div><dt>Studying</dt><dd>BSIT, La Consolacion College Tanauan</dd></div>
+          <div><dt>Favourite tools</dt><dd>PHP, MySQL, Java, C++</dd></div>
+          <div><dt>Open to</dt><dd>OJT &amp; internships</dd></div>
+        </dl>
+      </aside>
     </div>
+
+    <div class="how reveal">
+      <h3 class="how__title">How I work</h3>
+      <ol class="steps">
+        <li class="step"><span class="step__num">1</span><strong>Talk to the user</strong><span>Find out what the office or store really needs.</span></li>
+        <li class="step"><span class="step__num">2</span><strong>Design the database</strong><span>Plan the tables so records stay accurate.</span></li>
+        <li class="step"><span class="step__num">3</span><strong>Build the features</strong><span>Code the screens and logic that people use every day.</span></li>
+        <li class="step"><span class="step__num">4</span><strong>Test and report</strong><span>Check it works, then generate the reports people need.</span></li>
+      </ol>
+    </div>
+
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="section">
+  <section id="skills" class="slide section">
     <p class="eyebrow reveal">02 — SKILLS</p>
     <h2 class="section__title reveal">Stock on hand.</h2>
     <ul class="skills reveal" aria-label="Skills">
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-01</span>System Design</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-02</span>Database Design</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-03</span>Problem Solving</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-04</span>PHP</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-05</span>C</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-06</span>C++</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-07</span>MySQL</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-08</span>Python</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-09</span>Java</li>
-      <li class="skill-tag"><span class="skill-tag__sku">SKU-10</span>HTML</li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-01</span>System Design<span class="skill-tag__meter" data-level="2" role="img" aria-label="Level: Comfortable"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-02</span>Database Design<span class="skill-tag__meter" data-level="3" role="img" aria-label="Level: Strong"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-03</span>Problem Solving<span class="skill-tag__meter" data-level="3" role="img" aria-label="Level: Strong"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-04</span>PHP<span class="skill-tag__meter" data-level="3" role="img" aria-label="Level: Strong"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-05</span>C<span class="skill-tag__meter" data-level="2" role="img" aria-label="Level: Comfortable"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-06</span>C++<span class="skill-tag__meter" data-level="2" role="img" aria-label="Level: Comfortable"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-07</span>MySQL<span class="skill-tag__meter" data-level="3" role="img" aria-label="Level: Strong"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-08</span>Python<span class="skill-tag__meter" data-level="1" role="img" aria-label="Level: Learning"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-09</span>Java<span class="skill-tag__meter" data-level="2" role="img" aria-label="Level: Comfortable"><i></i><i></i><i></i></span></li>
+      <li class="skill-tag"><span class="skill-tag__sku">SKU-10</span>HTML<span class="skill-tag__meter" data-level="3" role="img" aria-label="Level: Strong"><i></i><i></i><i></i></span></li>
     </ul>
+    <p class="skills__legend reveal">Bars show my level: <span><i class="lv lv1"></i> learning</span> <span><i class="lv lv2"></i> comfortable</span> <span><i class="lv lv3"></i> strong</span></p>
   </section>
 
   <!-- PROJECTS
        To add a project: copy one whole <article class="project reveal"> ... </article>
        block below, paste it under the last one, and change the text. -->
-  <section id="projects" class="section">
+  <section id="projects" class="slide section">
     <p class="eyebrow reveal">03 — PROJECTS</p>
     <h2 class="section__title reveal">Projects I've made.</h2>
 
@@ -193,6 +229,14 @@
           <span data-group="electropos" data-src="assets/projects/electropos-05-admin.jpg" data-title="ElectroPOS: Admin panel: staff approvals and accounts" data-alt="ElectroPOS screenshot: Admin panel: staff approvals and accounts" data-desc="Admins approve new accounts, manage staff roles, and change store settings and passwords."></span>
           <span data-group="electropos" data-src="assets/projects/electropos-06-history.jpg" data-title="ElectroPOS: Activity history: full audit log of system events" data-alt="ElectroPOS screenshot: Activity history: full audit log of system events" data-desc="A full audit log of orders, product changes, user changes and logins, filterable by user, date and category. It can be exported to CSV."></span>
           <span data-group="electropos" data-src="assets/projects/electropos-07-report.jpg" data-title="ElectroPOS: History report: daily, weekly or monthly PDF" data-alt="ElectroPOS screenshot: History report: daily, weekly or monthly PDF" data-desc="Generates a PDF audit report for a day, week or month, with an executive summary, order activity, product changes, login events and the full activity log."></span>
+        </div>
+        <div class="did">
+          <p class="did__label">WHAT I DID</p>
+          <dl>
+            <div><dt>Problem</dt><dd>An electric store needed one place to record sales and keep track of stock.</dd></div>
+            <div><dt>What I built</dt><dd>A point-of-sale with discounts and 10% tax, an inventory page with low-stock alerts, an admin panel, and an audit log with PDF reports.</dd></div>
+            <div><dt>Result</dt><dd>Stock counts stay accurate and there is less manual record-keeping.</dd></div>
+          </dl>
         </div>
         <ul class="project__list">
           <li>Developed a point-of-sale and inventory system for an electric store to handle sales transactions and stock monitoring.</li>
@@ -230,6 +274,14 @@
           <span data-group="hr" data-src="assets/projects/hr-14-team.jpg" data-title="HR Ticket System: Team and users management" data-alt="HR Ticket System screenshot: Team and users management" data-desc="Admins add and deactivate staff and teachers, and set each person&#x27;s role and department."></span>
           <span data-group="hr" data-src="assets/projects/hr-15-audit-log.jpg" data-title="HR Ticket System: Audit log of sign-ins and changes" data-alt="HR Ticket System screenshot: Audit log of sign-ins and changes" data-desc="A record of sign-ins, ticket changes, assignments, leave balance changes and account changes, filterable by action, date and search."></span>
         </div>
+        <div class="did">
+          <p class="did__label">WHAT I DID</p>
+          <dl>
+            <div><dt>Problem</dt><dd>HR requests on leave, payroll concerns, benefits and records needed one place to be sent and followed up.</dd></div>
+            <div><dt>What I built</dt><dd>A ticket system to submit, assign and resolve requests, with leave balances, reports and an audit log.</dd></div>
+            <div><dt>Result</dt><dd>HR can submit, track and resolve concerns in one place.</dd></div>
+          </dl>
+        </div>
         <ul class="project__list">
           <li>Built a system for the HR office to manage employment records, payroll concerns, leave applications, benefits, and faculty and staff requests.</li>
           <li>Organized requests as tickets so HR can submit, track, and resolve concerns in one place.</li>
@@ -263,6 +315,14 @@
           <span data-group="library" data-src="assets/projects/library-11-reservation.jpg" data-title="School Library System: Reservation: reserve books" data-alt="School Library System screenshot: Reservation: reserve books" data-desc="Reserve a book with a patron ID and an accession number. Available items go to the reserve shelf, and items on loan join a queue."></span>
           <span data-group="library" data-src="assets/projects/library-12-utilities.jpg" data-title="School Library System: Utilities: library rules and settings" data-alt="School Library System screenshot: Utilities: library rules and settings" data-desc="Library settings: reserve shelf days, renewals allowed, closed days, blocking borrowing while items are overdue, and borrowing rules for each patron type."></span>
         </div>
+        <div class="did">
+          <p class="did__label">WHAT I DID</p>
+          <dl>
+            <div><dt>Problem</dt><dd>A school library needed to manage borrowing, patrons, rooms and equipment.</dd></div>
+            <div><dt>What I built</dt><dd>Circulation (borrow, return, renew), patron records and overdue lists, plus attendance, acquisition, inventory, serials and reservation modules.</dd></div>
+            <div><dt>Result</dt><dd>Staff run the library from one system and print reports or save them to Excel.</dd></div>
+          </dl>
+        </div>
         <ul class="project__list">
           <li>Developed a library management system covering circulation (borrow, return, renew), patron records, and overdue lists.</li>
           <li>Added attendance, acquisition, inventory, file storage, serials, and reservation modules for books, rooms, and equipment.</li>
@@ -288,6 +348,14 @@
           <span data-group="connect4" data-src="assets/projects/connect4-2-share.jpg" data-title="Connect4: Share the join link or scan the QR code" data-alt="Connect4 screenshot: Share the join link or scan the QR code" data-desc="A friend joins by scanning the QR code or opening the link, which can be copied in one click."></span>
           <span data-group="connect4" data-src="assets/projects/connect4-3-board.jpg" data-title="Connect4: Game board with scores and controls" data-alt="Connect4 screenshot: Game board with scores and controls" data-desc="The game board with each player&#x27;s score, plus New Round, Reset Scores, New Players and View Records. Click a column or press the key above it (Q W E R T Y U) to drop a disc."></span>
         </div>
+        <div class="did">
+          <p class="did__label">WHAT I DID</p>
+          <dl>
+            <div><dt>Problem</dt><dd>I wanted a quick game two friends could play on any device.</dd></div>
+            <div><dt>What I built</dt><dd>A Connect4 game with scores, rounds, player names and records, playable by click or keyboard on mobile and PC.</dd></div>
+            <div><dt>Result</dt><dd>A working game that plays the same on a phone or a computer.</dd></div>
+          </dl>
+        </div>
         <ul class="project__list">
           <li>Created a Connect4 game app playable on both mobile and PC, allowing players to compete against a friend.</li>
           <li>Designed game logic and a simple, responsive interface that works across devices.</li>
@@ -301,9 +369,55 @@
 
   <!-- ACHIEVEMENTS
        Cards use small WebP thumbnails; the full-size PNG loads only when a badge is opened. -->
-  <section id="achievements" class="section">
-    <p class="eyebrow reveal">04 — ACHIEVEMENTS</p>
+  <!-- CASE STUDY -->
+  <section id="casestudy" class="slide section">
+    <p class="eyebrow reveal">04 — CASE STUDY</p>
+    <h2 class="section__title reveal">ElectroPOS, start to finish.</h2>
+    <div class="case__grid reveal">
+      <article class="case__card">
+        <p class="case__label">THE PROBLEM</p>
+        <p>An electric store needed one system to record every sale and keep track of stock, instead of manual record-keeping.</p>
+      </article>
+      <article class="case__card case__card--built">
+        <p class="case__label">WHAT I BUILT</p>
+        <ul>
+          <li>A point of sale: search products, apply a percent or peso discount, charge with 10% tax.</li>
+          <li>Inventory with critical and low-stock alerts.</li>
+          <li>A dashboard with daily, weekly and monthly sales and best sellers.</li>
+          <li>An admin panel, an audit log and PDF reports.</li>
+        </ul>
+      </article>
+      <article class="case__card case__card--result">
+        <p class="case__label">THE RESULT</p>
+        <p>Stock counts stay accurate, manual record-keeping is reduced, and sales and stock can be seen at a glance.</p>
+      </article>
+    </div>
+    <p class="case__role reveal">My part: I handled the whole process &mdash; understanding what the store needed, designing the database, building the features and generating the reports.</p>
+    <div class="case__shots reveal">
+      <button type="button" class="case__shot" data-open-group="electropos" data-open-index="2" aria-label="Open ElectroPOS slide: Point of Sale">
+        <img src="assets/projects/thumbs/electropos-03-pos.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+        <span>Point of Sale</span>
+      </button>
+      <button type="button" class="case__shot" data-open-group="electropos" data-open-index="3" aria-label="Open ElectroPOS slide: Inventory">
+        <img src="assets/projects/thumbs/electropos-04-inventory.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+        <span>Inventory</span>
+      </button>
+      <button type="button" class="case__shot" data-open-group="electropos" data-open-index="1" aria-label="Open ElectroPOS slide: Dashboard">
+        <img src="assets/projects/thumbs/electropos-02-dashboard.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+        <span>Dashboard</span>
+      </button>
+      <button type="button" class="case__shot case__shot--all" data-open-group="electropos" aria-label="Show all 7 ElectroPOS slides">
+        <strong>&#9654; Show the project</strong>
+        <span>All 7 slides</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="achievements" class="slide section">
+    <p class="eyebrow reveal">05 — ACHIEVEMENTS</p>
     <h2 class="section__title reveal">Certified &amp; verified.</h2>
+    <!-- To add a school award or certificate: copy one <button class="achievement-card"> below, change the image, title and data-* texts
+         (keep data-group="badges" so it joins the viewer). -->
     <div class="achievements reveal">
       <button type="button" class="achievement-card" data-group="badges" data-src="assets/achievements/html-essentials.png" data-title="HTML Essentials" aria-label="View HTML Essentials badge">
         <img src="assets/achievements/thumbs/html-essentials.webp" alt="Cisco Networking Academy: HTML Essentials" width="360" height="360" loading="lazy" decoding="async">
@@ -365,8 +479,8 @@
   </section>
 
   <!-- EDUCATION & EXPERIENCE -->
-  <section id="education" class="section">
-    <p class="eyebrow reveal">05 — EDUCATION &amp; EXPERIENCE</p>
+  <section id="education" class="slide section">
+    <p class="eyebrow reveal">06 — EDUCATION &amp; EXPERIENCE</p>
     <h2 class="section__title reveal">Where I learn and build.</h2>
     <div class="edu-grid">
       <article class="edu-card reveal">
@@ -391,9 +505,11 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section section--contact">
-    <p class="eyebrow reveal">06 — CONTACT</p>
+  <section id="contact" class="slide section section--contact">
+    <p class="eyebrow reveal">07 — CONTACT</p>
     <h2 class="section__title reveal">Let's build something.</h2>
+    <div class="contact-grid">
+    <div class="contact__left">
     <p class="contact__body reveal">
       Open to on-the-job training placements, internships, and small projects.
       The fastest way to reach me is email.
@@ -401,10 +517,25 @@
     <div class="contact__actions reveal">
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=24-13012@lcctanauan.edu.ph" target="_blank" rel="noopener" class="btn btn--primary">24-13012@lcctanauan.edu.ph</a>
       <a href="assets/Melecio-Laurente-Resume.pdf" download id="resumeBtn" class="btn btn--ghost btn--download"><span class="btn__label">Download Resume (PDF)</span></a>
+      <button type="button" id="resumePreviewBtn" class="btn btn--ghost">Preview Resume</button>
       <button type="button" id="copyLinkBtn" class="btn btn--ghost">Copy Link</button>
     </div>
     <div class="contact__socials reveal">
       <a href="https://github.com/24-13012-rgb" target="_blank" rel="noopener" class="link" aria-label="GitHub profile of Melecio Laurente">GitHub profile</a>
+    </div>
+    </div>
+    <form class="contact-form reveal" id="contactForm" data-endpoint="" novalidate>
+      <p class="contact-form__title">Send me a message</p>
+      <label for="cfName">Name</label>
+      <input id="cfName" name="name" type="text" autocomplete="name" required maxlength="80">
+      <label for="cfEmail">Your email</label>
+      <input id="cfEmail" name="email" type="email" autocomplete="email" required maxlength="120">
+      <label for="cfMsg">Message</label>
+      <textarea id="cfMsg" name="message" rows="4" required maxlength="1500"></textarea>
+      <input type="text" name="_gotcha" class="cf-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn--primary" id="cfSubmit"><span class="btn__label">Send message</span></button>
+      <p class="contact-form__status" id="cfStatus" role="status" aria-live="polite"></p>
+    </form>
     </div>
   </section>
 
@@ -420,6 +551,17 @@
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
+<dialog id="resumeDialog" class="resume-dialog" aria-label="Resume preview">
+  <div class="resume-dialog__bar">
+    <p class="resume-dialog__title">Resume &mdash; Melecio Laurente</p>
+    <a class="btn btn--primary resume-dialog__download" href="assets/Melecio-Laurente-Resume.pdf" download>Download</a>
+    <button type="button" class="resume-dialog__close" id="resumeClose" aria-label="Close">&times;</button>
+  </div>
+  <object id="resumeObj" type="application/pdf" aria-label="Resume PDF">
+    <p class="resume-dialog__fallback">Your browser can&rsquo;t show the PDF here. <a class="link" href="assets/Melecio-Laurente-Resume.pdf" target="_blank" rel="noopener">Open the resume in a new tab</a> or use Download.</p>
+  </object>
+</dialog>
+
 <dialog id="badgeDialog" class="badge-dialog" aria-label="Image viewer">
   <button type="button" class="badge-dialog__close" id="badgeClose" aria-label="Close">&times;</button>
   <button type="button" class="badge-dialog__nav badge-dialog__nav--prev" id="badgePrev" aria-label="Previous">&#8249;</button>
@@ -433,8 +575,11 @@
   <button type="button" class="badge-dialog__nav badge-dialog__nav--next" id="badgeNext" aria-label="Next">&#8250;</button>
 </dialog>
 
-<script src="js/script.js?v=20261108" defer></script>
-<script src="js/background.js?v=20261108" defer></script>
-<script src="js/floating.js?v=20261108" defer></script>
+<script src="js/script.js?v=20261113" defer></script>
+<script src="js/background.js?v=20261113" defer></script>
+<script src="js/floating.js?v=20261113" defer></script>
+<script src="js/deck.js?v=20261113" defer></script>
+<script src="js/motion.js?v=20261113" defer></script>
+<script src="js/features.js?v=20261113" defer></script>
 </body>
 </html>
