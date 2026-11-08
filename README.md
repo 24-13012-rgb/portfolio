@@ -74,3 +74,6 @@ Switching slides jumps to the top instantly (no gliding scroll), a sideways scro
 - **Keyboard hint** that fades after a few seconds (shown once per visit, desktop only).
 - **Red wipe** between slides (skipped when "reduce motion" is on).
 - **Awards / certificates**: copy an `achievement-card` button in the Achievements slide (a comment shows where).
+
+## Case studies (slide 04)
+The Case studies slide has one panel per project (ElectroPOS, HR Ticket System, School Library System, Connect4), each with The problem / What I built / The result, a line about my part, and three screenshots that open the viewer at that screen plus a "Show the project" button. Switch with the chips (they also work with the left/right arrow keys). Each project card has a "Read the case study" link that opens the matching panel. To edit, change the text inside `<div class="case-panel" id="case-...">` in `index.html`.

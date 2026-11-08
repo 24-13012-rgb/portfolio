@@ -14,7 +14,7 @@
   root.classList.add('deck');
   root.classList.remove('deck-pending');
 
-  var LABELS = { home: 'Home', about: 'About', skills: 'Skills', projects: 'Projects', casestudy: 'Case study', achievements: 'Achievements', education: 'Education', contact: 'Contact' };
+  var LABELS = { home: 'Home', about: 'About', skills: 'Skills', projects: 'Projects', casestudy: 'Case studies', achievements: 'Achievements', education: 'Education', contact: 'Contact' };
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var current = -1;
   var dialog = document.getElementById('badgeDialog');
@@ -159,7 +159,7 @@
   function typing(t) { return t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName); }
   document.addEventListener('keydown', function (e) {
     if (document.querySelector('dialog[open]')) return;     // pop-ups use the arrows themselves
-    if (typing(e.target) || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (typing(e.target) || (e.target.closest && e.target.closest('[role="tablist"]')) || e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === 'ArrowRight') go(current + 1);
     if (e.key === 'ArrowLeft') go(current - 1);
   });

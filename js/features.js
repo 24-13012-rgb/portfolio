@@ -14,6 +14,38 @@
     return a ? a.id : '';
   }
 
+  /* ---------- 0. Case study switcher ---------- */
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-case-tab]'));
+    if (!tabs.length) return;
+    function select(key, focus) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-case-tab') === key;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+        var panel = document.getElementById('case-' + t.getAttribute('data-case-tab'));
+        if (panel) panel.hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t.getAttribute('data-case-tab')); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+        if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') n = 0;
+        if (e.key === 'End') n = tabs.length - 1;
+        if (n !== null) { e.preventDefault(); select(tabs[n].getAttribute('data-case-tab'), true); }
+      });
+    });
+    // "Read the case study" links on the project cards pick the right tab first
+    document.querySelectorAll('[data-case]').forEach(function (a) {
+      a.addEventListener('click', function () { select(a.getAttribute('data-case')); });
+    });
+  })();
+
   /* ---------- 1. Keyboard hint ---------- */
   (function () {
     var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;

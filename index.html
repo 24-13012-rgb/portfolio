@@ -46,12 +46,12 @@
 <link rel="preload" href="assets/fonts/space-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="css/style.css?v=20261113">
-<link rel="stylesheet" href="css/additions.css?v=20261113">
-<link rel="stylesheet" href="css/theme.css?v=20261113">
-<link rel="stylesheet" href="css/deck.css?v=20261113">
-<link rel="stylesheet" href="css/motion.css?v=20261113">
-<link rel="stylesheet" href="css/features.css?v=20261113">
+<link rel="stylesheet" href="css/style.css?v=20261114">
+<link rel="stylesheet" href="css/additions.css?v=20261114">
+<link rel="stylesheet" href="css/theme.css?v=20261114">
+<link rel="stylesheet" href="css/deck.css?v=20261114">
+<link rel="stylesheet" href="css/motion.css?v=20261114">
+<link rel="stylesheet" href="css/features.css?v=20261114">
 
 <script type="application/ld+json">
 {
@@ -242,6 +242,7 @@
           <li>Developed a point-of-sale and inventory system for an electric store to handle sales transactions and stock monitoring.</li>
           <li>Built inventory tracking features to keep product quantities accurate and reduce manual record-keeping.</li>
         </ul>
+        <p class="project__case"><a class="link" href="#casestudy" data-case="electropos">Read the case study &rarr;</a></p>
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
@@ -286,6 +287,7 @@
           <li>Built a system for the HR office to manage employment records, payroll concerns, leave applications, benefits, and faculty and staff requests.</li>
           <li>Organized requests as tickets so HR can submit, track, and resolve concerns in one place.</li>
         </ul>
+        <p class="project__case"><a class="link" href="#casestudy" data-case="hr">Read the case study &rarr;</a></p>
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
@@ -328,6 +330,7 @@
           <li>Added attendance, acquisition, inventory, file storage, serials, and reservation modules for books, rooms, and equipment.</li>
           <li>Built reports that can be printed or saved to Excel, plus utilities for settings, staff accounts, and an activity log.</li>
         </ul>
+        <p class="project__case"><a class="link" href="#casestudy" data-case="library">Read the case study &rarr;</a></p>
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
@@ -360,6 +363,7 @@
           <li>Created a Connect4 game app playable on both mobile and PC, allowing players to compete against a friend.</li>
           <li>Designed game logic and a simple, responsive interface that works across devices.</li>
         </ul>
+        <p class="project__case"><a class="link" href="#casestudy" data-case="connect4">Read the case study &rarr;</a></p>
         <div class="project__meta">
           <div class="project__meta-row"><span>ROLE</span><i></i><span>Developer</span></div>
         </div>
@@ -369,47 +373,172 @@
 
   <!-- ACHIEVEMENTS
        Cards use small WebP thumbnails; the full-size PNG loads only when a badge is opened. -->
-  <!-- CASE STUDY -->
+  <!-- CASE STUDIES: one panel per project; the chips switch between them -->
   <section id="casestudy" class="slide section">
-    <p class="eyebrow reveal">04 — CASE STUDY</p>
-    <h2 class="section__title reveal">ElectroPOS, start to finish.</h2>
-    <div class="case__grid reveal">
-      <article class="case__card">
-        <p class="case__label">THE PROBLEM</p>
-        <p>An electric store needed one system to record every sale and keep track of stock, instead of manual record-keeping.</p>
-      </article>
-      <article class="case__card case__card--built">
-        <p class="case__label">WHAT I BUILT</p>
-        <ul>
+    <p class="eyebrow reveal">04 — CASE STUDIES</p>
+    <h2 class="section__title reveal">Start to finish.</h2>
+    <div class="case__tabs reveal" role="tablist" aria-label="Choose a project">
+      <button type="button" class="chip is-active" role="tab" id="tab-electropos" aria-controls="case-electropos" aria-selected="true" tabindex="0" data-case-tab="electropos">ElectroPOS</button><button type="button" class="chip" role="tab" id="tab-hr" aria-controls="case-hr" aria-selected="false" tabindex="-1" data-case-tab="hr">HR Ticket System</button><button type="button" class="chip" role="tab" id="tab-library" aria-controls="case-library" aria-selected="false" tabindex="-1" data-case-tab="library">School Library System</button><button type="button" class="chip" role="tab" id="tab-connect4" aria-controls="case-connect4" aria-selected="false" tabindex="-1" data-case-tab="connect4">Connect4</button>
+    </div>
+    <div class="case-panel" id="case-electropos" role="tabpanel" aria-labelledby="tab-electropos">
+      <div class="case__grid">
+        <article class="case__card">
+          <p class="case__label">THE PROBLEM</p>
+          <p>An electric store needed one system to record every sale and keep track of stock, instead of manual record-keeping.</p>
+        </article>
+        <article class="case__card case__card--built">
+          <p class="case__label">WHAT I BUILT</p>
+          <ul>
           <li>A point of sale: search products, apply a percent or peso discount, charge with 10% tax.</li>
           <li>Inventory with critical and low-stock alerts.</li>
           <li>A dashboard with daily, weekly and monthly sales and best sellers.</li>
           <li>An admin panel, an audit log and PDF reports.</li>
-        </ul>
-      </article>
-      <article class="case__card case__card--result">
-        <p class="case__label">THE RESULT</p>
-        <p>Stock counts stay accurate, manual record-keeping is reduced, and sales and stock can be seen at a glance.</p>
-      </article>
+          </ul>
+        </article>
+        <article class="case__card case__card--result">
+          <p class="case__label">THE RESULT</p>
+          <p>Stock counts stay accurate, manual record-keeping is reduced, and sales and stock can be seen at a glance.</p>
+        </article>
+      </div>
+      <p class="case__role">My part: I handled the whole process &mdash; understanding what the store needed, designing the database, building the features and generating the reports.</p>
+      <div class="case__shots">
+        <button type="button" class="case__shot" data-open-group="electropos" data-open-index="2" aria-label="Open slide: Point of Sale">
+          <img src="assets/projects/thumbs/electropos-03-pos.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Point of Sale</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="electropos" data-open-index="3" aria-label="Open slide: Inventory">
+          <img src="assets/projects/thumbs/electropos-04-inventory.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Inventory</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="electropos" data-open-index="1" aria-label="Open slide: Dashboard">
+          <img src="assets/projects/thumbs/electropos-02-dashboard.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Dashboard</span>
+        </button>
+        <button type="button" class="case__shot case__shot--all" data-open-group="electropos" aria-label="Show all 7 slides">
+          <strong>&#9654; Show the project</strong>
+          <span>All 7 slides</span>
+        </button>
+      </div>
     </div>
-    <p class="case__role reveal">My part: I handled the whole process &mdash; understanding what the store needed, designing the database, building the features and generating the reports.</p>
-    <div class="case__shots reveal">
-      <button type="button" class="case__shot" data-open-group="electropos" data-open-index="2" aria-label="Open ElectroPOS slide: Point of Sale">
-        <img src="assets/projects/thumbs/electropos-03-pos.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
-        <span>Point of Sale</span>
-      </button>
-      <button type="button" class="case__shot" data-open-group="electropos" data-open-index="3" aria-label="Open ElectroPOS slide: Inventory">
-        <img src="assets/projects/thumbs/electropos-04-inventory.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
-        <span>Inventory</span>
-      </button>
-      <button type="button" class="case__shot" data-open-group="electropos" data-open-index="1" aria-label="Open ElectroPOS slide: Dashboard">
-        <img src="assets/projects/thumbs/electropos-02-dashboard.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
-        <span>Dashboard</span>
-      </button>
-      <button type="button" class="case__shot case__shot--all" data-open-group="electropos" aria-label="Show all 7 ElectroPOS slides">
-        <strong>&#9654; Show the project</strong>
-        <span>All 7 slides</span>
-      </button>
+    <div class="case-panel" id="case-hr" role="tabpanel" aria-labelledby="tab-hr" hidden>
+      <div class="case__grid">
+        <article class="case__card">
+          <p class="case__label">THE PROBLEM</p>
+          <p>Staff and teachers needed one place to send HR their leave, payroll, benefits and employment-record requests, and HR needed one place to follow them up.</p>
+        </article>
+        <article class="case__card case__card--built">
+          <p class="case__label">WHAT I BUILT</p>
+          <ul>
+          <li>Requesters pick a category and send a ticket. The leave form counts the days and warns when it is over their balance, which then needs HR Head approval.</li>
+          <li>Each ticket is a conversation with a due date, priority, status and notifications.</li>
+          <li>An HR overview with status filters, internal notes, assignment and an overdue view.</li>
+          <li>Leave balances with adjustment history, reports with CSV export, team management and an audit log.</li>
+          </ul>
+        </article>
+        <article class="case__card case__card--result">
+          <p class="case__label">THE RESULT</p>
+          <p>HR can submit, track and resolve concerns in one place, and late tickets show in red so the most urgent are handled first.</p>
+        </article>
+      </div>
+      <p class="case__role">My part: I was the developer. I built the ticket and leave flow, the reports and the audit log.</p>
+      <div class="case__shots">
+        <button type="button" class="case__shot" data-open-group="hr" data-open-index="2" aria-label="Open slide: New ticket">
+          <img src="assets/projects/thumbs/hr-03-new-ticket.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>New ticket</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="hr" data-open-index="6" aria-label="Open slide: HR overview">
+          <img src="assets/projects/thumbs/hr-07-overview.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>HR overview</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="hr" data-open-index="12" aria-label="Open slide: Reports">
+          <img src="assets/projects/thumbs/hr-13-reports.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Reports</span>
+        </button>
+        <button type="button" class="case__shot case__shot--all" data-open-group="hr" aria-label="Show all 15 slides">
+          <strong>&#9654; Show the project</strong>
+          <span>All 15 slides</span>
+        </button>
+      </div>
+    </div>
+    <div class="case-panel" id="case-library" role="tabpanel" aria-labelledby="tab-library" hidden>
+      <div class="case__grid">
+        <article class="case__card">
+          <p class="case__label">THE PROBLEM</p>
+          <p>A school library needed to run borrowing, visitor attendance, new orders and shelf checks in one system, for a catalog of thousands of titles.</p>
+        </article>
+        <article class="case__card case__card--built">
+          <p class="case__label">WHAT I BUILT</p>
+          <ul>
+          <li>A circulation desk to check out, return and renew by scanning a patron ID and an accession number.</li>
+          <li>Catalog search by title, author, call number or ISBN, with filters and CSV export.</li>
+          <li>Modules for attendance, acquisition, inventory, files, serials and reservations.</li>
+          <li>Printable reports and settings for borrowing rules by patron type.</li>
+          </ul>
+        </article>
+        <article class="case__card case__card--result">
+          <p class="case__label">THE RESULT</p>
+          <p>Staff run circulation, visits, orders and shelf audits from one system, and print reports or export them.</p>
+        </article>
+      </div>
+      <p class="case__role">My part: I was the developer. I built the circulation desk, the modules and the reports.</p>
+      <div class="case__shots">
+        <button type="button" class="case__shot" data-open-group="library" data-open-index="3" aria-label="Open slide: Circulation">
+          <img src="assets/projects/thumbs/library-04-circulation.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Circulation</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="library" data-open-index="2" aria-label="Open slide: Catalog">
+          <img src="assets/projects/thumbs/library-03-catalog.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Catalog</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="library" data-open-index="8" aria-label="Open slide: Reports">
+          <img src="assets/projects/thumbs/library-09-reports.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Reports</span>
+        </button>
+        <button type="button" class="case__shot case__shot--all" data-open-group="library" aria-label="Show all 12 slides">
+          <strong>&#9654; Show the project</strong>
+          <span>All 12 slides</span>
+        </button>
+      </div>
+    </div>
+    <div class="case-panel" id="case-connect4" role="tabpanel" aria-labelledby="tab-connect4" hidden>
+      <div class="case__grid">
+        <article class="case__card">
+          <p class="case__label">THE PROBLEM</p>
+          <p>I wanted a quick game two friends could play together on a phone or a computer.</p>
+        </article>
+        <article class="case__card case__card--built">
+          <p class="case__label">WHAT I BUILT</p>
+          <ul>
+          <li>A start screen to enter your name and pick one of ten colors.</li>
+          <li>A share link and QR code so a friend can join.</li>
+          <li>A game board with scores, new rounds, reset scores and records.</li>
+          <li>Play by clicking a column or pressing the key above it.</li>
+          </ul>
+        </article>
+        <article class="case__card case__card--result">
+          <p class="case__label">THE RESULT</p>
+          <p>A working two-player game that plays the same on mobile and PC.</p>
+        </article>
+      </div>
+      <p class="case__role">My part: I designed the game logic and a simple, responsive interface.</p>
+      <div class="case__shots">
+        <button type="button" class="case__shot" data-open-group="connect4" data-open-index="0" aria-label="Open slide: Start screen">
+          <img src="assets/projects/thumbs/connect4-1-start.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Start screen</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="connect4" data-open-index="1" aria-label="Open slide: Share link">
+          <img src="assets/projects/thumbs/connect4-2-share.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Share link</span>
+        </button>
+        <button type="button" class="case__shot" data-open-group="connect4" data-open-index="2" aria-label="Open slide: Game board">
+          <img src="assets/projects/thumbs/connect4-3-board.webp" alt="" width="720" height="450" loading="lazy" decoding="async">
+          <span>Game board</span>
+        </button>
+        <button type="button" class="case__shot case__shot--all" data-open-group="connect4" aria-label="Show all 3 slides">
+          <strong>&#9654; Show the project</strong>
+          <span>All 3 slides</span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -575,11 +704,11 @@
   <button type="button" class="badge-dialog__nav badge-dialog__nav--next" id="badgeNext" aria-label="Next">&#8250;</button>
 </dialog>
 
-<script src="js/script.js?v=20261113" defer></script>
-<script src="js/background.js?v=20261113" defer></script>
-<script src="js/floating.js?v=20261113" defer></script>
-<script src="js/deck.js?v=20261113" defer></script>
-<script src="js/motion.js?v=20261113" defer></script>
-<script src="js/features.js?v=20261113" defer></script>
+<script src="js/script.js?v=20261114" defer></script>
+<script src="js/background.js?v=20261114" defer></script>
+<script src="js/floating.js?v=20261114" defer></script>
+<script src="js/deck.js?v=20261114" defer></script>
+<script src="js/motion.js?v=20261114" defer></script>
+<script src="js/features.js?v=20261114" defer></script>
 </body>
 </html>

@@ -282,3 +282,18 @@
 .about .section__title { max-width: none; font-size: clamp(2.4rem, 5.2vw, 4.2rem); margin-bottom: 1.5rem; }
 .nav__links .nav__cta[aria-current="true"], .nav__links .nav__cta:hover { color: #FFFFFF; }
 .nav__links .nav__cta[aria-current="true"] { background: var(--ink); color: var(--bg); }
+
+/* ---------- Case studies: project switcher ---------- */
+.case__tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.case-panel[hidden] { display: none; }
+.project__case { margin: 0.25rem 0 1rem; }
+.case__shots .case__shot--all[data-open-group] { align-self: stretch; }
+
+/* tighter case-study slide so the screenshots show without much scrolling */
+#casestudy .section__title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); margin-bottom: 1.1rem; }
+#casestudy .case__tabs { margin-bottom: 1.1rem; }
+#casestudy .case__card { padding: 1rem 1.2rem; font-size: 0.9rem; }
+#casestudy .case__card li { font-size: 0.85rem; }
+#casestudy .case__grid { gap: 1rem; margin-bottom: 0.9rem; }
+#casestudy .case__role { margin-bottom: 1rem; font-size: 0.95rem; }
+#casestudy .case__shot img { height: 112px; }
